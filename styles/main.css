@@ -1,15 +1,20 @@
-/* main.css - Estilos Globales de Gestión SB */
+/* main.css — Estilos Globales · Gestion SB */
 
+/* ─── Tipografía ──────────────────────────────── */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     scroll-behavior: smooth;
     color: var(--brand-text);
 }
 
-/* --- Header y Navegación --- */
+/* Clase global para fuente de marca — elimina todos los inline style="" */
+.font-brand  { font-family: var(--font-brand);  }
+.font-serif  { font-family: var(--font-serif);  }
+
+/* ─── Header y Navegación ─────────────────────── */
 .glass-header {
     background: transparent;
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: var(--transition-slow);
     border-bottom: 1px solid transparent;
 }
 
@@ -26,7 +31,7 @@ body {
     padding: 0.2rem 1rem;
 }
 
-/* --- Placas de Información --- */
+/* ─── Placas de Información ───────────────────── */
 .placa-maestra {
     background: var(--bg-white);
     border-radius: var(--radius-placa);
@@ -39,7 +44,7 @@ body {
     border-radius: var(--radius-subplaca);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
     border: 1px solid #f9fafb;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition-base);
 }
 
 .sub-placa:hover {
@@ -47,41 +52,24 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Utilidades --- */
-.gradient-text {
-    background: linear-gradient(135deg, var(--brand-text) 0%, var(--primary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-    height: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #f3f4f6;
-    border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Highlight for items in cart */
+/* ─── Carrito de Compras ──────────────────────── */
 .product-in-cart {
     border: 2px solid var(--primary) !important;
     transform: scale(1.02);
     box-shadow: 0 10px 15px -3px rgba(0, 168, 118, 0.1);
+}
+
+.product-in-cart .add-to-cart-btn {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* ─── Utilidades ──────────────────────────────── */
+.gradient-text {
+    background: linear-gradient(135deg, var(--brand-text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .glass-card {
@@ -90,7 +78,31 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.product-in-cart .add-to-cart-btn {
-    background-color: var(--primary);
-    color: white;
+/* ─── Scrollbar ───────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar        { height: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track  { background: #f3f4f6; border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb  { background: var(--primary); border-radius: 10px; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Lazy Loading Placeholder ────────────────── */
+img[loading="lazy"] {
+    background: #f3f4f6;
+}
+
+/* ─── Animaciones de Entrada ──────────────────── */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ─── Accesibilidad ───────────────────────────── */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px;
 }

@@ -5,89 +5,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Mejor Consultora | Estética y Cuidado Personal</title>
-    <meta name="description"
-        content="Descubrí el universo de belleza de Stefanía Barroso. Peluquería, maquillaje, productos de cuidado personal y asesoría experta en Mar del Plata. Excelencia en cada detalle para realzar tu esencia natural.">
-    <meta name="keywords"
-        content="Stefanía Barroso, peluquería Mar del Plata, maquillaje profesional, estética, cuidado personal, belleza natural, productos de belleza">
+    <meta name="description" content="Descubrí el universo de belleza de Stefanía Barroso. Peluquería, maquillaje, productos de cuidado personal y asesoría experta en Mar del Plata. Excelencia en cada detalle para realzar tu esencia natural.">
+    <meta name="keywords" content="Stefanía Barroso, peluquería Mar del Plata, maquillaje profesional, estética, cuidado personal, belleza natural, productos de belleza">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stefaniabarroso.com.ar/">
     <meta property="og:title" content="Tu Mejor Consultora | Estética y Cuidado Personal">
-    <meta property="og:description"
-        content="Excelencia en estética y cuidado personal. Conocé nuestros servicios de peluquería, maquillaje y más.">
+    <meta property="og:description" content="Excelencia en estética y cuidado personal. Conocé nuestros servicios de peluquería, maquillaje y más.">
     <meta property="og:image" content="assets/img/logo_2.png">
 
-    <link rel="icon" type="image/png" href="assets/img/logo_2.png">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@1,700&family=Dancing+Script:wght@700&display=swap"
-        rel="stylesheet">
+    <!-- Favicon optimizado (usar .ico o .svg en producción) -->
+    <link rel="icon" type="image/png" href="assets/img/logo_Kaizuna.jpeg">
+
+    <!-- Fuentes: preconnect para carga anticipada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@1,700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CDN + Config de Tokens -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#00a876',
-                        secondary: '#d4af37',
-                        brandText: '#064e3b',
-                        brandSubtext: '#4B5563',
+                        primary:       '#00a876',
+                        secondary:     '#d4af37',
+                        brandText:     '#064e3b',
+                        brandSubtext:  '#4B5563',
                     },
                     fontFamily: {
                         poppins: ['Poppins', 'sans-serif'],
-                        serif: ['Libre Baskerville', 'serif'],
+                        serif:   ['Libre Baskerville', 'serif'],
+                        brand:   ['Dancing Script', 'cursive'],
                     },
                 }
             }
         }
     </script>
+
+    <!-- SweetAlert2 (cargado diferido para no bloquear render) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Estilos globales -->
     <link rel="stylesheet" href="styles/colores.css">
     <link rel="stylesheet" href="styles/main.css">
 
     <!-- Vercel Speed Insights -->
-    <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
+    <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 
 <body class="bg-white text-brandText antialiased scroll-smooth overflow-x-hidden w-full m-0 p-0">
 
-    <!-- Top Navigation Header -->
+    <!-- ══════════════════════════════════════════
+         HEADER — Navegación Fija
+    ══════════════════════════════════════════ -->
     <header id="main-header" class="fixed top-0 left-0 w-full z-50 glass-header border-b border-gray-100">
-        <nav class="w-full px-1 md:px-4 py-1 flex justify-between items-center transition-all duration-300"
-            id="nav-container">
-            <!-- Identity -->
+        <nav class="w-full px-1 md:px-4 py-1 flex justify-between items-center transition-all duration-300" id="nav-container">
+
+            <!-- Identidad de Marca -->
             <div class="flex items-center space-x-1 md:space-x-4 flex-grow shrink min-w-0">
                 <img src="assets/img/logo_2.png" alt="Stefanía Barroso"
-                    class="h-10 md:h-[4.5rem] w-auto object-contain -ml-2">
-                <h1 class="text-xl md:text-6xl font-bold tracking-tight text-brandText whitespace-nowrap overflow-hidden text-ellipsis"
-                    style="font-family: 'Dancing Script', cursive;">
+                    class="h-10 md:h-[4.5rem] w-auto object-contain -ml-2"
+                    loading="eager" width="72" height="72">
+                <h1 class="text-xl md:text-6xl font-bold tracking-tight text-brandText whitespace-nowrap overflow-hidden text-ellipsis font-brand">
                     Tu Mejor <span class="text-secondary">Consultora</span>
                 </h1>
             </div>
 
-            <!-- Desktop Links -->
-            <ul
-                class="hidden md:flex flex-[2] justify-center space-x-10 font-bold text-xs tracking-widest text-brandSubtext">
-                <li><a href="#inicio" class="hover:text-primary transition-colors">INICIO</a></li>
-                <li><a href="#catalogo" class="hover:text-primary transition-colors">CATÁLOGO</a></li>
-                <li><a href="#sumate" class="hover:text-primary transition-colors">SUMATE</a></li>
-                <li><a href="#contacto" class="hover:text-primary transition-colors">CONTACTO</a></li>
+            <!-- Links de Escritorio -->
+            <ul class="hidden md:flex flex-[2] justify-center space-x-10 font-bold text-xs tracking-widest text-brandSubtext">
+                <li><a href="#inicio"    class="hover:text-primary transition-colors">INICIO</a></li>
+                <li><a href="#productos" class="hover:text-primary transition-colors">CATÁLOGO</a></li>
+                <li><a href="#quien-soy" class="hover:text-primary transition-colors">NOSOTROS</a></li>
+                <li><a href="#contacto"  class="hover:text-primary transition-colors">CONTACTO</a></li>
             </ul>
 
-            <!-- Mobile Actions -->
+            <!-- Acciones Móviles -->
             <div class="flex items-center space-x-1 md:space-x-5 justify-end shrink-0">
                 <a href="login.html" id="btn-acceso"
-                    class="text-brandText hover:text-primary p-1 md:p-2 group transition-colors" title="Acceso">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    class="text-brandText hover:text-primary p-1 md:p-2 transition-colors" title="Acceso al Panel">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                 </a>
-                <button id="menu-btn" class="md:hidden text-brandText p-1">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="menu-btn" class="md:hidden text-brandText p-1" aria-label="Abrir menú">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h8"></path>
                     </svg>
@@ -96,606 +102,593 @@
         </nav>
     </header>
 
-    <!-- Hero Carousel Section (Infinite) -->
+    <!-- ══════════════════════════════════════════
+         HERO — Carrusel Infinito
+    ══════════════════════════════════════════ -->
     <section id="inicio" class="relative w-full h-screen overflow-hidden bg-black">
         <div id="carousel-track" class="h-full w-full flex" style="transform: translateX(-100%);">
-            <!-- Clone of Slide 4 (Video) -->
-            <div class="carousel-item min-w-full h-full relative">
+
+            <!-- Clon de Slide 4 (Video — al inicio para loop infinito) -->
+            <div class="carousel-item min-w-full h-full relative" aria-hidden="true">
                 <video src="assets/video/video_prueba.mp4" autoplay loop muted playsinline
                     class="w-full h-full object-cover"></video>
             </div>
 
-            <!-- Slide 1 -->
+            <!-- Slide 1: Peluquería -->
             <div class="carousel-item min-w-full h-full relative">
-                <img src="assets/img/carousel_1.png" alt="" class="w-full h-full object-cover opacity-60">
-                <div
-                    class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
-                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">Estilo que <span
-                            class="text-secondary italic font-serif">inspira</span></h2>
-                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">Elevá tu imagen
-                        con las últimas tendencias en peluquería profesional.</p>
-                    <div class="flex-grow"></div>
-                    <a href="#catalogo"
-                        class="bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">Ver
-                        servicios</a>
+                <img src="assets/img/carousel_1.png" alt="Peluquería profesional"
+                    class="w-full h-full object-cover opacity-60" loading="eager" fetchpriority="high">
+                <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
+                        Estilo que <span class="text-secondary italic font-serif">inspira</span>
+                    </h2>
+                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
+                        Elevá tu imagen con las últimas tendencias en peluquería profesional.
+                    </p>
+                    <a href="#productos"
+                        class="mt-auto bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">
+                        Ver servicios
+                    </a>
                 </div>
             </div>
 
-            <!-- Slide 2 -->
+            <!-- Slide 2: Maquillaje -->
             <div class="carousel-item min-w-full h-full relative">
-                <img src="assets/img/carousel_2.png" alt="" class="w-full h-full object-cover opacity-60">
-                <div
-                    class="absolute inset-0 flex flex-col justify-start items-end text-right pt-[18vh] pb-32 pr-6 md:pr-24">
-                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">Brillá <span
-                            class="text-secondary italic font-serif">con todo.</span></h2>
-                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">Maquillaje
-                        profesional para eventos y ocasiones inolvidables.</p>
-                    <div class="flex-grow"></div>
+                <img src="assets/img/carousel_2.png" alt="Maquillaje profesional"
+                    class="w-full h-full object-cover opacity-60" loading="lazy">
+                <div class="absolute inset-0 flex flex-col justify-start items-end text-right pt-[18vh] pb-32 pr-6 md:pr-24">
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
+                        Brillá <span class="text-secondary italic font-serif">con todo.</span>
+                    </h2>
+                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
+                        Maquillaje profesional para eventos y ocasiones inolvidables.
+                    </p>
                     <a href="https://wa.me/5492235869878"
-                        class="bg-secondary hover:bg-white hover:text-secondary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">Reservar
-                        ahora</a>
+                        class="mt-auto bg-secondary hover:bg-white hover:text-secondary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">
+                        Reservar ahora
+                    </a>
                 </div>
             </div>
 
-            <!-- Slide 3 -->
+            <!-- Slide 3: Emprendimiento -->
             <div class="carousel-item min-w-full h-full relative overflow-hidden">
                 <div class="w-full h-full bg-gradient-to-tr from-brandText via-[#052d23] to-primary">
-                    <div
-                        class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
-                        <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">Construí tu <span
-                                class="text-secondary italic font-serif">futuro</span></h2>
-                        <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">Sumate a
-                            nuestro equipo de profesionales y crecé con nosotros.</p>
-                        <div class="flex-grow"></div>
-                        <a href="#sumate"
-                            class="border flex w-max border-white/80 hover:bg-white hover:text-brandText text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-lg hover:shadow-xl">Sumarme</a>
+                    <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
+                        <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
+                            Construí tu <span class="text-secondary italic font-serif">futuro</span>
+                        </h2>
+                        <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
+                            Sumate a nuestro equipo de profesionales y crecé con nosotros.
+                        </p>
+                        <a href="#quien-soy"
+                            class="mt-auto border flex w-max border-white/80 hover:bg-white hover:text-brandText text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-lg hover:shadow-xl">
+                            Sumarme
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4 (Video) -->
+            <!-- Slide 4: Video -->
             <div class="carousel-item min-w-full h-full relative">
                 <video src="assets/video/video_prueba.mp4" autoplay loop muted playsinline
                     class="w-full h-full object-cover"></video>
             </div>
 
-            <!-- Clone of Slide 1 -->
-            <div class="carousel-item min-w-full h-full relative">
-                <img src="assets/img/carousel_1.png" alt="" class="w-full h-full object-cover opacity-60">
-                <div
-                    class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
-                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">Estilo que <span
-                            class="text-secondary italic font-serif">inspira</span></h2>
-                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">Elevá tu imagen
-                        con las últimas tendencias en peluquería profesional.</p>
-                    <div class="flex-grow"></div>
-                    <a href="#catalogo"
-                        class="bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">Ver
-                        servicios</a>
+            <!-- Clon de Slide 1 (para cierre del loop infinito) -->
+            <div class="carousel-item min-w-full h-full relative" aria-hidden="true">
+                <img src="assets/img/carousel_1.png" alt=""
+                    class="w-full h-full object-cover opacity-60" loading="lazy">
+                <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
+                        Estilo que <span class="text-secondary italic font-serif">inspira</span>
+                    </h2>
+                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
+                        Elevá tu imagen con las últimas tendencias en peluquería profesional.
+                    </p>
+                    <a href="#productos"
+                        class="mt-auto bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">
+                        Ver servicios
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Carousel Indicators -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="0"></button>
-            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="1"></button>
-            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="2"></button>
-            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="3"></button>
+        <!-- Indicadores del Carrusel -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10" role="tablist" aria-label="Diapositivas del carrusel">
+            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="0" aria-label="Diapositiva 1"></button>
+            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="1" aria-label="Diapositiva 2"></button>
+            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="2" aria-label="Diapositiva 3"></button>
+            <button class="carousel-dot w-2 h-2 rounded-full bg-white/40" data-index="3" aria-label="Diapositiva 4"></button>
         </div>
 
-        <!-- Controls -->
-        <button id="prev-btn"
-            class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm z-20 transition-all active:scale-95"><svg
-                class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Controles del Carrusel -->
+        <button id="prev-btn" aria-label="Anterior"
+            class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm z-20 transition-all active:scale-95">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
-            </svg></button>
-        <button id="next-btn"
-            class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm z-20 transition-all active:scale-95"><svg
-                class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            </svg>
+        </button>
+        <button id="next-btn" aria-label="Siguiente"
+            class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full backdrop-blur-sm z-20 transition-all active:scale-95">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
-            </svg></button>
+            </svg>
+        </button>
     </section>
 
-    <!-- Brand Message Section -->
-    <section class="bg-white pt-10 pb-6">
+    <!-- ══════════════════════════════════════════
+         CATEGORÍAS — Ribbon de Servicios
+    ══════════════════════════════════════════ -->
+    <section class="bg-white pt-10 pb-6" aria-labelledby="cats-heading">
         <div class="w-full max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-2xl md:text-3xl font-black text-brandText">encontrá la categoría perfecta para vos</h2>
+            <h2 id="cats-heading" class="text-2xl md:text-3xl font-black text-brandText">
+                Encontrá la categoría perfecta para vos
+            </h2>
         </div>
     </section>
 
-    <!-- Services Ribbon (Interactivo e Infinito) -->
     <section class="bg-white pt-2 pb-12 overflow-hidden">
-        <div id="ribbon-scroll" class="w-full overflow-x-auto custom-scrollbar px-4 no-scrollbar">
+        <div id="ribbon-scroll" class="w-full overflow-x-auto px-4 no-scrollbar">
             <div class="flex items-center gap-10 md:gap-16 min-w-max" id="ribbon-track">
-                <!-- Seccion real -->
+                <!-- Sección real -->
                 <div class="flex items-center gap-10 md:gap-16" id="ribbon-set">
-                    <!-- 1. Promociones -->
-                    <div class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
-                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24">
+
+                    <!-- Promociones -->
+                    <button class="flex flex-col items-center group cursor-pointer min-w-[100px]"
+                        aria-label="Ver Promociones">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
                                 </path>
                             </svg>
                         </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText">promo</span>
-                    </div>
-                    <!-- 2. Productos de Belleza -->
+                        <span class="text-sm font-bold tracking-tight text-brandText">Promo</span>
+                    </button>
+
+                    <!-- Productos de Belleza -->
                     <a href="productos-belleza/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
-                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
                                 </path>
                             </svg>
                         </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText text-center">productos
-                            de<br>belleza</span>
+                        <span class="text-sm font-bold tracking-tight text-brandText text-center">Productos<br>de Belleza</span>
                     </a>
-                    <!-- 3. Joyas y Semijoyas -->
+
+                    <!-- Joyas y Semijoyas -->
                     <a href="joyas/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
-                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z">
                                 </path>
                             </svg>
                         </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText text-center">joyas y<br>semijoyas</span>
+                        <span class="text-sm font-bold tracking-tight text-brandText text-center">Joyas y<br>Semijoyas</span>
                     </a>
-                    <!-- 4. Belleza (Integración de Maquillaje, Peluquería y Manicuría) -->
-                    <div class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
-                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24">
+
+                    <!-- Belleza -->
+                    <button class="flex flex-col items-center group cursor-pointer min-w-[100px]"
+                        aria-label="Ver servicios de Belleza">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z">
+                                    d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z">
                                 </path>
                             </svg>
                         </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText uppercase text-center">belleza</span>
-                    </div>
+                        <span class="text-sm font-bold tracking-tight text-brandText uppercase text-center">Belleza</span>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tira de Productos -->
-    <section class="py-12 bg-gray-50/30">
+    <!-- ══════════════════════════════════════════
+         PRODUCTOS DESTACADOS
+    ══════════════════════════════════════════ -->
+    <section id="productos" class="py-12 bg-gray-50/30" aria-labelledby="prod-heading">
         <div class="w-full max-w-7xl mx-auto px-4">
-            <h2 class="text-xl md:text-2xl font-bold text-brandText mb-8 text-center uppercase tracking-wide">Productos
-                Destacados</h2>
-            <div class="flex overflow-x-auto gap-4 md:gap-8 snap-x snap-mandatory pb-6 custom-scrollbar no-scrollbar">
+            <h2 id="prod-heading" class="text-xl md:text-2xl font-bold text-brandText mb-8 text-center uppercase tracking-wide">
+                Productos Destacados
+            </h2>
+            <div class="flex overflow-x-auto gap-4 md:gap-8 snap-x snap-mandatory pb-6 no-scrollbar">
+
                 <!-- Producto 1 -->
                 <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 p-4 flex flex-col items-center hover:shadow-md transition-all min-w-[200px] md:min-w-[250px] flex-shrink-0 snap-start product-card"
                     data-name="Perfume Natura Clásico" data-code="12345" data-price="18500">
                     <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80"
-                        alt="Perfume" class="w-full h-40 object-cover rounded-xl mb-4">
+                        alt="Perfume Natura Clásico" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy" width="400" height="160">
                     <span class="text-xs text-gray-500 font-medium mb-1">CÓD. 12345</span>
-                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Clásico
-                    </h3>
+                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Clásico</h3>
                     <div class="text-lg font-black text-primary mb-4">$ 18.500</div>
-                    <button
-                        class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">Comprar</button>
+                    <button class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">
+                        Comprar
+                    </button>
                 </div>
+
                 <!-- Producto 2 -->
                 <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 p-4 flex flex-col items-center hover:shadow-md transition-all min-w-[200px] md:min-w-[250px] flex-shrink-0 snap-start product-card"
                     data-name="Perfume Natura Floral" data-code="12346" data-price="21000">
                     <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80"
-                        alt="Perfume" class="w-full h-40 object-cover rounded-xl mb-4">
+                        alt="Perfume Natura Floral" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy" width="400" height="160">
                     <span class="text-xs text-gray-500 font-medium mb-1">CÓD. 12346</span>
-                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Floral
-                    </h3>
+                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Floral</h3>
                     <div class="text-lg font-black text-primary mb-4">$ 21.000</div>
-                    <button
-                        class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">Comprar</button>
+                    <button class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">
+                        Comprar
+                    </button>
                 </div>
+
                 <!-- Producto 3 -->
                 <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 p-4 flex flex-col items-center hover:shadow-md transition-all min-w-[200px] md:min-w-[250px] flex-shrink-0 snap-start product-card"
                     data-name="Perfume Natura Intenso" data-code="12347" data-price="25500">
                     <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80"
-                        alt="Perfume" class="w-full h-40 object-cover rounded-xl mb-4">
+                        alt="Perfume Natura Intenso" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy" width="400" height="160">
                     <span class="text-xs text-gray-500 font-medium mb-1">CÓD. 12347</span>
-                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Intenso
-                    </h3>
+                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Intenso</h3>
                     <div class="text-lg font-black text-primary mb-4">$ 25.500</div>
-                    <button
-                        class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">Comprar</button>
+                    <button class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">
+                        Comprar
+                    </button>
                 </div>
+
                 <!-- Producto 4 -->
                 <div class="bg-white rounded-[1.5rem] shadow-sm border border-gray-100 p-4 flex flex-col items-center hover:shadow-md transition-all min-w-[200px] md:min-w-[250px] flex-shrink-0 snap-start product-card"
                     data-name="Perfume Natura Fresco" data-code="12348" data-price="16900">
                     <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80"
-                        alt="Perfume" class="w-full h-40 object-cover rounded-xl mb-4">
+                        alt="Perfume Natura Fresco" class="w-full h-40 object-cover rounded-xl mb-4" loading="lazy" width="400" height="160">
                     <span class="text-xs text-gray-500 font-medium mb-1">CÓD. 12348</span>
-                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Fresco
-                    </h3>
+                    <h3 class="font-bold text-brandText mb-2 text-center text-sm md:text-base">Perfume Natura Fresco</h3>
                     <div class="text-lg font-black text-primary mb-4">$ 16.900</div>
-                    <button
-                        class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">Comprar</button>
+                    <button class="add-to-cart-btn w-full py-2 rounded-full border border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">
+                        Comprar
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Razón de ser Natura -->
-    <section id="quien-soy" class="py-12 md:py-24 bg-white">
+    <!-- ══════════════════════════════════════════
+         NOSOTROS — Razón de Ser
+    ══════════════════════════════════════════ -->
+    <section id="quien-soy" class="py-12 md:py-24 bg-white" aria-labelledby="about-heading">
         <div class="w-full max-w-5xl mx-auto px-4 flex flex-row items-stretch gap-6 md:gap-16">
-            <!-- Imagen -->
+            <!-- Imagen de Perfil -->
             <div class="w-1/2">
-                <img src="assets/img/stefania_profile.png" alt="Razón de ser"
-                    class="w-full h-full object-cover rounded-[1rem] shadow-sm border border-gray-100 min-h-[250px]">
+                <img src="assets/img/stefania_profile.png" alt="Stefanía Barroso — Asesora de Belleza"
+                    class="w-full h-full object-cover rounded-[1rem] shadow-sm border border-gray-100 min-h-[250px]"
+                    loading="lazy" width="600" height="400">
             </div>
-            <!-- Texto Placa -->
+            <!-- Texto -->
             <div class="w-1/2 flex flex-col items-start justify-center text-left py-2">
-                <h2 class="text-lg md:text-2xl font-bold text-black mb-3">Tu mejor asesora de belleza</h2>
+                <h2 id="about-heading" class="text-lg md:text-2xl font-bold text-black mb-3">
+                    Tu mejor asesora de belleza
+                </h2>
                 <p class="text-sm md:text-xl text-gray-800 leading-relaxed font-normal mb-6">
-                    nuestra razón de ser es crear y comercializar productos que promuevan el bien estar bien
+                    Nuestra razón de ser es crear y comercializar productos que promuevan el bienestar y realcen tu esencia natural.
                 </p>
                 <a href="#contacto"
                     class="px-6 py-2 md:px-8 md:py-3 rounded-full border border-[#f48c42] text-black font-bold text-xs md:text-sm hover:bg-[#f48c42] hover:text-white transition-all shadow-sm">
-                    conocer más
+                    Conocer más
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contacto Section -->
-    <section id="contacto" class="pt-24 pb-8 bg-white text-brandText">
+    <!-- ══════════════════════════════════════════
+         CONTACTO
+    ══════════════════════════════════════════ -->
+    <section id="contacto" class="pt-24 pb-8 bg-white text-brandText" aria-labelledby="contact-heading">
         <div class="max-w-3xl mx-auto text-center space-y-10">
-            <!-- Info -->
             <div class="space-y-10">
-                <h2 class="text-4xl md:text-5xl font-black text-brandText uppercase italic">Contactanos</h2>
-                <p class="text-xl text-brandSubtext">Estamos para asesorarte. Respondemos tus consultas de forma personalizada y rápida.</p>
+                <h2 id="contact-heading" class="text-4xl md:text-5xl font-black text-brandText uppercase italic">
+                    Contactanos
+                </h2>
+                <p class="text-xl text-brandSubtext">
+                    Estamos para asesorarte. Respondemos tus consultas de forma personalizada y rápida.
+                </p>
 
                 <div class="flex flex-col items-center space-y-5">
                     <div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-primary shadow-sm hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-brandText uppercase tracking-widest text-sm mb-1">Email</h4>
-                        <p class="text-brandSubtext">contacto@tumejorconsultora.com.ar</p>
+                        <h3 class="font-bold text-brandText uppercase tracking-widest text-sm mb-1">Email</h3>
+                        <a href="mailto:contacto@tumejorconsultora.com.ar"
+                            class="text-brandSubtext hover:text-primary transition-colors">
+                            contacto@tumejorconsultora.com.ar
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ══════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════ -->
     <footer class="py-12 bg-gray-50 border-t border-gray-100 mt-0">
         <div class="w-full max-w-7xl mx-auto px-4 text-center">
-            <a href="https://kaizuna.com.ar/" target="_blank">
-                <img src="assets/img/logo_Kaizuna.jpeg" alt="Kaizuna" class="h-12 mx-auto mb-6 opacity-90 hover:opacity-100 transition-opacity">
+            <a href="https://kaizuna.com.ar/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/img/logo_Kaizuna.jpeg" alt="Kaizuna — Plataforma de Gestión"
+                    class="h-12 mx-auto mb-6 opacity-90 hover:opacity-100 transition-opacity"
+                    loading="lazy" width="120" height="48">
             </a>
             <p class="text-brandSubtext text-xs tracking-wider flex items-center justify-center gap-3">
-                <span>&copy; 2026 <a href="https://kaizuna.com.ar/" target="_blank" class="hover:text-primary transition-colors font-bold">Kaizuna</a> | Licencia MIT</span>
+                <span>&copy; 2026 <a href="https://kaizuna.com.ar/" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-primary transition-colors font-bold">Kaizuna</a> | Licencia MIT</span>
             </p>
         </div>
     </footer>
 
-    <!-- WhatsApp Button -->
-    <!-- WhatsApp & Cart Floating Buttons -->
+    <!-- ══════════════════════════════════════════
+         BOTONES FLOTANTES — WhatsApp & Carrito
+    ══════════════════════════════════════════ -->
     <div class="fixed bottom-4 right-4 flex flex-col items-end space-y-4 z-50">
-        <!-- Shopping Cart -->
+        <!-- Botón de Carrito (oculto hasta que haya items) -->
         <button id="cart-btn"
-            class="hidden relative bg-brandText text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="hidden relative bg-brandText text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform"
+            aria-label="Ver carrito de compras">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
                 </path>
             </svg>
             <span id="cart-count"
-                class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+                class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">
+                0
+            </span>
         </button>
 
-        <a href="https://wa.me/5492235869878"
-            class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+        <!-- Botón de WhatsApp -->
+        <a href="https://wa.me/5492235869878" target="_blank" rel="noopener noreferrer"
+            class="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform"
+            aria-label="Contactar por WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                 <path
-                    d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.594l.008-.008zm-5.606 12.23c-1.25 0-2.456-.33-3.509-.96l-.25-.15-2.61.685.698-2.541-.165-.262a6.839 6.839 0 0 1-1.05-3.69c.002-3.791 3.086-6.877 6.88-6.877a6.853 6.853 0 0 1 4.856 2.013 6.856 6.856 0 0 1 2.015 4.857c-.004 3.792-3.089 6.878-6.884 6.878zM11.56 10.29c-.194-.097-1.144-.565-1.32-.63-.176-.064-.304-.097-.432.097-.128.193-.496.63-.608.756-.112.126-.224.141-.418.045-.194-.097-.82-.303-1.562-.963-.578-.517-.968-1.156-1.082-1.35-.112-.193-.012-.298.085-.395.087-.087.194-.224.29-.337.098-.113.13-.193.194-.322.065-.13.032-.242-.016-.337-.048-.097-.432-1.043-.593-1.433-.153-.374-.32-.322-.432-.328-.11-.006-.239-.007-.367-.007a.703.703 0 0 0-.51.242c-.176.193-.672.657-.672 1.603 0 .945.69 1.86 1.786 2.007.194.027 1.153.303 1.956.657.34.15.64.218.88.254.214.033.613.02 1.103-.053.547-.082 1.144-.468 1.304-.928.16-.46.16-.853.112-.928-.048-.076-.176-.112-.37-.209z" />
+                    d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93a7.898 7.898 0 0 0-2.327-5.594l.008-.008zm-5.606 12.23c-1.25 0-2.456-.33-3.509-.96l-.25-.15-2.61.685.698-2.541-.165-.262a6.839 6.839 0 0 1-1.05-3.69c.002-3.791 3.086-6.877 6.88-6.877a6.853 6.853 0 0 1 4.856 2.013 6.856 6.856 0 0 1 2.015 4.857c-.004 3.792-3.089 6.878-6.884 6.878z" />
             </svg>
         </a>
     </div>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu"
-        class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl z-[100] transform translate-x-full transition-transform duration-300 shadow-2xl md:hidden">
+    <!-- ══════════════════════════════════════════
+         MENÚ MÓVIL (Overlay)
+    ══════════════════════════════════════════ -->
+    <nav id="mobile-menu"
+        class="fixed inset-y-0 right-0 w-64 bg-white/95 backdrop-blur-xl z-[100] transform translate-x-full transition-transform duration-300 shadow-2xl md:hidden"
+        aria-label="Menú de navegación móvil">
         <div class="flex flex-col h-full p-8">
-            <button id="close-menu" class="self-end p-2 text-brandText mb-8">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="close-menu" class="self-end p-2 text-brandText mb-8" aria-label="Cerrar menú">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <nav class="flex flex-col space-y-6 text-lg font-bold text-brandText uppercase tracking-widest">
-                <a href="#inicio" class="mobile-link hover:text-primary">Inicio</a>
-                <a href="#catalogo" class="mobile-link hover:text-primary">Catálogo</a>
-                <a href="#sumate" class="mobile-link hover:text-primary">Sumate</a>
-                <a href="#contacto" class="mobile-link hover:text-primary">Contacto</a>
-            </nav>
+            <div class="flex flex-col space-y-6 text-lg font-bold text-brandText uppercase tracking-widest">
+                <a href="#inicio"    class="mobile-link hover:text-primary">Inicio</a>
+                <a href="#productos" class="mobile-link hover:text-primary">Catálogo</a>
+                <a href="#quien-soy" class="mobile-link hover:text-primary">Nosotros</a>
+                <a href="#contacto"  class="mobile-link hover:text-primary">Contacto</a>
+            </div>
         </div>
-    </div>
+    </nav>
 
+    <!-- ══════════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════════ -->
     <script>
-        // Header
+        // ─── Header con efecto scroll ─────────────────────────────
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) header.classList.add('header-scrolled');
-            else header.classList.remove('header-scrolled');
-        });
+            header.classList.toggle('header-scrolled', window.scrollY > 20);
+        }, { passive: true });
 
-        // Infinite Carousel logic
-        const track = document.getElementById('carousel-track');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        let currentIndex = 1;
-        const totalSlides = 4;
-        let isTransitioning = false;
+        // ─── Carrusel Infinito ────────────────────────────────────
+        (function initCarousel() {
+            const track   = document.getElementById('carousel-track');
+            const dots    = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const TOTAL   = 4;
+            let current   = 1;
+            let busy      = false;
+            let autoTimer;
 
-        function updateCarousel(instant = false) {
-            track.style.transition = instant ? 'none' : 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
-            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            function goTo(idx, instant = false) {
+                track.style.transition = instant ? 'none' : 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)';
+                track.style.transform  = `translateX(-${idx * 100}%)`;
+                // Actualizar dots (mapeo correcto)
+                const dotIdx = idx === 0 ? 3 : idx > TOTAL ? 0 : idx - 1;
+                dots.forEach((d, i) => {
+                    d.classList.toggle('bg-white',     i === dotIdx);
+                    d.classList.toggle('bg-white/40',  i !== dotIdx);
+                });
+            }
 
-            // Fix dots indicator for 4 slides
-            const dotIndex = (currentIndex === 0) ? 3 : (currentIndex > 4) ? 0 : currentIndex - 1;
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('bg-white', i === dotIndex);
-                dot.classList.toggle('bg-white/40', i !== dotIndex);
+            track.addEventListener('transitionend', () => {
+                busy = false;
+                if (current >= TOTAL + 1) { current = 1; goTo(current, true); }
+                if (current <= 0)         { current = TOTAL; goTo(current, true); }
             });
-        }
 
-        track.addEventListener('transitionend', () => {
-            isTransitioning = false;
-            if (currentIndex >= 5) { currentIndex = 1; updateCarousel(true); }
-            if (currentIndex <= 0) { currentIndex = 4; updateCarousel(true); }
-        });
+            function slide(dir) {
+                if (busy) return;
+                busy = true;
+                current += dir;
+                goTo(current);
+            }
 
-        const slideAction = (dir) => { if (!isTransitioning) { isTransitioning = true; currentIndex += dir; updateCarousel(); } };
-        nextBtn.addEventListener('click', () => slideAction(1));
-        prevBtn.addEventListener('click', () => slideAction(-1));
-        dots.forEach((dot, i) => dot.addEventListener('click', () => { currentIndex = i + 1; updateCarousel(); }));
-        setInterval(() => slideAction(1), 8000);
+            nextBtn.addEventListener('click', () => { slide(1);  resetAuto(); });
+            prevBtn.addEventListener('click', () => { slide(-1); resetAuto(); });
+            dots.forEach((dot, i) => dot.addEventListener('click', () => {
+                current = i + 1; goTo(current); resetAuto();
+            }));
 
-        // Infinite Ribbon logic (Manual scroll loop)
-        const ribbon = document.getElementById('ribbon-scroll');
-        const ribbonTrack = document.getElementById('ribbon-track');
-        const ribbonSet = document.getElementById('ribbon-set');
+            function resetAuto() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => slide(1), 8000);
+            }
+            resetAuto();
+        })();
 
-        // Clone for infinite effect
-        ribbonTrack.appendChild(ribbonSet.cloneNode(true));
-        ribbonTrack.appendChild(ribbonSet.cloneNode(true));
+        // ─── Ribbon Infinito ──────────────────────────────────────
+        (function initRibbon() {
+            const ribbon     = document.getElementById('ribbon-scroll');
+            const track      = document.getElementById('ribbon-track');
+            const set        = document.getElementById('ribbon-set');
 
-        ribbon.addEventListener('scroll', () => {
-            const gap = parseInt(window.getComputedStyle(ribbonTrack).gap) || 24;
-            const setWidth = ribbonSet.offsetWidth + gap;
-            if (ribbon.scrollLeft >= setWidth * 2) ribbon.scrollLeft -= setWidth;
-            if (ribbon.scrollLeft <= 0) ribbon.scrollLeft += setWidth;
-        });
+            // Solo 2 clones son suficientes para el efecto
+            track.appendChild(set.cloneNode(true));
+            track.appendChild(set.cloneNode(true));
 
-        // Mobile Menu
-        const menuBtn = document.getElementById('menu-btn');
-        const closeMenu = document.getElementById('close-menu');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+            ribbon.addEventListener('scroll', () => {
+                const gap      = parseInt(getComputedStyle(track).gap) || 24;
+                const setWidth = set.offsetWidth + gap;
+                if (ribbon.scrollLeft >= setWidth * 2) ribbon.scrollLeft -= setWidth;
+                if (ribbon.scrollLeft <= 0)            ribbon.scrollLeft += setWidth;
+            }, { passive: true });
+        })();
 
-        const toggleMenu = () => mobileMenu.classList.toggle('translate-x-full');
+        // ─── Menú Móvil ───────────────────────────────────────────
+        (function initMobileMenu() {
+            const menuBtn   = document.getElementById('menu-btn');
+            const closeBtn  = document.getElementById('close-menu');
+            const menu      = document.getElementById('mobile-menu');
+            const links     = menu.querySelectorAll('.mobile-link');
+            const toggle    = () => menu.classList.toggle('translate-x-full');
+            menuBtn.addEventListener('click',  toggle);
+            closeBtn.addEventListener('click', toggle);
+            links.forEach(l => l.addEventListener('click', toggle));
+        })();
 
-        menuBtn?.addEventListener('click', toggleMenu);
-        closeMenu?.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // --- Telemetría y Observabilidad (Gestion SB Standard) ---
+        // ─── Telemetría (Gestion SB Standard) ────────────────────
         const SB_Telemetry = {
-            log: (type, data) => {
-                const trace = {
+            log(type, data) {
+                console.log(`[SB-TELEMETRY] ${type.toUpperCase()}:`, {
                     timestamp: new Date().toISOString(),
-                    type: type,
-                    path: window.location.pathname,
-                    data: data,
-                    userAgent: navigator.userAgent
-                };
-                console.log(`[SB-TELEMETRY] ${type.toUpperCase()}:`, trace);
-                // Si existiera el módulo dashboard/app.py, aquí se enviaría el fetch interactivo
+                    type, path: location.pathname, data
+                });
             },
-            init: () => {
-                window.onerror = (msg, url, line) => SB_Telemetry.log('error', { msg, url, line });
-                document.querySelectorAll('a, button').forEach(el => {
-                    el.addEventListener('click', (e) => {
-                        const id = e.currentTarget.id || e.currentTarget.title || 'unnamed-element';
-                        SB_Telemetry.log('interaction', { elementId: id, label: e.currentTarget.innerText?.substring(0, 20) });
+            init() {
+                window.onerror = (msg, url, line) => this.log('error', { msg, url, line });
+                document.querySelectorAll('a[id], button[id]').forEach(el => {
+                    el.addEventListener('click', e => {
+                        this.log('interaction', {
+                            id:    e.currentTarget.id,
+                            label: e.currentTarget.innerText?.substring(0, 30)
+                        });
                     });
                 });
-                SB_Telemetry.log('lifecycle', { event: 'load' });
+                this.log('lifecycle', { event: 'load' });
             }
         };
         SB_Telemetry.init();
 
-        // Shopping Cart Engine
+        // ─── Motor de Carrito ─────────────────────────────────────
         const SB_Cart = {
-            storageKey: 'sb_cart_v1',
+            KEY: 'sb_cart_v1',
             items: [],
 
             init() {
-                this.load();
+                const saved = localStorage.getItem(this.KEY);
+                this.items  = saved ? JSON.parse(saved) : [];
                 this.bindEvents();
                 this.updateUI();
             },
 
-            load() {
-                const saved = localStorage.getItem(this.storageKey);
-                this.items = saved ? JSON.parse(saved) : [];
-            },
-
-            persist() {
-                localStorage.setItem(this.storageKey, JSON.stringify(this.items));
-            },
+            persist() { localStorage.setItem(this.KEY, JSON.stringify(this.items)); },
 
             bindEvents() {
-                // Delegation for "Add to Cart" buttons
                 document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
+                    btn.addEventListener('click', e => {
                         const card = e.target.closest('.product-card');
-                        const product = {
-                            name: card.dataset.name,
-                            code: card.dataset.code,
+                        this.add({
+                            name:  card.dataset.name,
+                            code:  card.dataset.code,
                             price: parseInt(card.dataset.price),
-                            qty: 1
-                        };
-                        this.add(product);
+                            qty:   1
+                        });
                     });
                 });
-
-                // Floating Cart Button
-                document.getElementById('cart-btn').addEventListener('click', () => {
-                    this.showOrderPreview();
-                });
+                document.getElementById('cart-btn').addEventListener('click', () => this.showPreview());
             },
 
             add(product) {
-                // Logic: if already in cart (same code), just increase qty
-                const existing = this.items.find(item => item.code === product.code);
-                if (existing) {
-                    existing.qty += 1;
-                } else {
-                    this.items.push(product);
-                }
-
+                const existing = this.items.find(i => i.code === product.code);
+                if (existing) existing.qty++;
+                else          this.items.push(product);
                 this.persist();
                 this.updateUI();
-
-                // Visual feedback
                 Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
+                    toast: true, position: 'top-end', icon: 'success',
                     title: `¡Añadido: ${product.name}!`,
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true
+                    showConfirmButton: false, timer: 2000, timerProgressBar: true
                 });
             },
 
             updateUI() {
-                const count = this.items.reduce((acc, item) => acc + item.qty, 0);
-                const btn = document.getElementById('cart-btn');
-                const badge = document.getElementById('cart-count');
+                const count = this.items.reduce((a, i) => a + i.qty, 0);
+                const btn   = document.getElementById('cart-btn');
+                document.getElementById('cart-count').innerText = count;
 
-                badge.innerText = count;
-
-                // Mark selected products in grid
                 document.querySelectorAll('.product-card').forEach(card => {
-                    const code = card.dataset.code;
-                    const isInCart = this.items.some(item => item.code === code);
-                    if (isInCart) {
-                        card.classList.add('product-in-cart');
-                        const btn = card.querySelector('.add-to-cart-btn');
-                        if (btn) btn.innerText = 'En Carrito';
-                    } else {
-                        card.classList.remove('product-in-cart');
-                        const btn = card.querySelector('.add-to-cart-btn');
-                        if (btn) btn.innerText = 'Comprar';
-                    }
+                    const inCart = this.items.some(i => i.code === card.dataset.code);
+                    card.classList.toggle('product-in-cart', inCart);
+                    const b = card.querySelector('.add-to-cart-btn');
+                    if (b) b.innerText = inCart ? 'En Carrito' : 'Comprar';
                 });
 
-                // Show/Hide button if empty
-                if (count > 0) {
-                    btn.classList.remove('hidden');
-                    btn.classList.add('flex');
-                } else {
-                    btn.classList.add('hidden');
-                    btn.classList.remove('flex');
-                }
+                btn.classList.toggle('hidden', count === 0);
+                btn.classList.toggle('flex',   count > 0);
             },
 
-            showOrderPreview() {
-                let html = `
-                    <div class="text-left text-sm max-h-[40vh] overflow-y-auto px-2">
-                        <table class="w-full">
-                            <thead class="border-b border-gray-100 italic text-brandText/60 text-[10px] uppercase">
-                                <tr>
-                                    <th class="py-2 text-left">Producto</th>
-                                    <th class="py-2 text-center">Cant.</th>
-                                    <th class="py-2 text-right">Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-50 uppercase text-[11px] font-bold">
-                `;
-
+            showPreview() {
+                let html  = `<div class="text-left text-sm max-h-[40vh] overflow-y-auto px-2"><table class="w-full"><thead class="border-b border-gray-100 italic text-brandText/60 text-[10px] uppercase"><tr><th class="py-2 text-left">Producto</th><th class="py-2 text-center">Cant.</th><th class="py-2 text-right">Subtotal</th></tr></thead><tbody class="divide-y divide-gray-50 uppercase text-[11px] font-bold">`;
                 let total = 0;
                 this.items.forEach(item => {
                     const sub = item.price * item.qty;
                     total += sub;
-                    html += `
-                        <tr>
-                            <td class="py-3">${item.name} <br> <span class="text-[9px] text-gray-400">CÓD. ${item.code}</span></td>
-                            <td class="py-3 text-center">${item.qty}</td>
-                            <td class="py-3 text-right">$ ${sub.toLocaleString()}</td>
-                        </tr>
-                    `;
+                    html += `<tr><td class="py-3">${item.name} <br><span class="text-[9px] text-gray-400">CÓD. ${item.code}</span></td><td class="py-3 text-center">${item.qty}</td><td class="py-3 text-right">$ ${sub.toLocaleString('es-AR')}</td></tr>`;
                 });
-
-                html += `
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center px-2">
-                        <span class="font-black text-brandText uppercase tracking-widest">Total:</span>
-                        <span class="text-xl font-black text-primary">$ ${total.toLocaleString()}</span>
-                    </div>
-                `;
+                html += `</tbody></table></div><div class="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center px-2"><span class="font-black text-brandText uppercase tracking-widest">Total:</span><span class="text-xl font-black text-primary">$ ${total.toLocaleString('es-AR')}</span></div>`;
 
                 Swal.fire({
-                    title: 'Tu Pedido',
-                    html: html,
+                    title: 'Tu Pedido', html,
                     showCancelButton: true,
                     confirmButtonText: 'Enviar por WhatsApp',
-                    cancelButtonText: 'Vaciar Carrito',
+                    cancelButtonText:  'Vaciar Carrito',
                     confirmButtonColor: '#25D366',
-                    cancelButtonColor: '#ff4b2b',
+                    cancelButtonColor:  '#ff4b2b',
                     reverseButtons: true,
-                    background: '#fff',
-                    color: '#064e3b',
-                    width: '95%',
+                    background: '#fff', color: '#064e3b', width: '95%',
                     customClass: {
-                        popup: 'rounded-[2rem]',
+                        popup:         'rounded-[2rem]',
                         confirmButton: 'rounded-full px-8 py-3 font-bold',
-                        cancelButton: 'rounded-full px-8 py-3 font-bold'
+                        cancelButton:  'rounded-full px-8 py-3 font-bold'
                     }
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        this.sendByWhatsApp();
-                    } else if (result.dismiss === Swal.DismissReason.cancel) {
-                        this.clear();
-                    }
+                }).then(r => {
+                    if (r.isConfirmed)                                 this.sendWhatsApp();
+                    if (r.dismiss === Swal.DismissReason.cancel) this.clear();
                 });
             },
 
-            sendByWhatsApp() {
-                let message = `Hola Stefanía! 👋 Quisiera realizar el siguiente pedido por la web:\n\n`;
+            sendWhatsApp() {
+                let msg   = `Hola Stefanía! 👋 Quisiera realizar el siguiente pedido por la web:\n\n`;
                 let total = 0;
-
-                this.items.forEach(item => {
-                    const sub = item.price * item.qty;
+                this.items.forEach(i => {
+                    const sub = i.price * i.qty;
                     total += sub;
-                    message += `▪️ *${item.qty}x* ${item.name} (Cód: ${item.code}) - $${sub.toLocaleString()}\n`;
+                    msg += `▪️ *${i.qty}x* ${i.name} (Cód: ${i.code}) — $${sub.toLocaleString('es-AR')}\n`;
                 });
-
-                message += `\n💰 *TOTAL: $${total.toLocaleString()}*\n\n¿Me podrías confirmar disponibilidad? Gracias!`;
-
-                const encoded = encodeURIComponent(message);
-                const wpUrl = `https://wa.me/5492235869878?text=${encoded}`;
-
-                window.location.href = wpUrl;
+                msg += `\n💰 *TOTAL: $${total.toLocaleString('es-AR')}*\n\n¿Me podés confirmar disponibilidad? ¡Gracias!`;
+                window.location.href = `https://wa.me/5492235869878?text=${encodeURIComponent(msg)}`;
             },
 
             clear() {
@@ -706,9 +699,12 @@
             }
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
+        // Init del carrito cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => SB_Cart.init());
+        } else {
             SB_Cart.init();
-        });
+        }
     </script>
 </body>
 
