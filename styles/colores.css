@@ -1,0 +1,15 @@
+/* variables.css - Paleta de Colores de Gestión SB */
+:root {
+    --primary: #00a876;
+    --secondary: #d4af37;
+    --brand-text: #064e3b;
+    --brand-subtext: #4B5563;
+    --bg-white: #ffffff;
+    --bg-gray: #f9fafb;
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --radius-full: 9999px;
+    --radius-placa: 2.5rem;
+    --radius-subplaca: 1.5rem;
+}

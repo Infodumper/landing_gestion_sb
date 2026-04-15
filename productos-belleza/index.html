@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es" class="overflow-x-hidden">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos de Belleza | Catálogo | Tu Mejor Consultora</title>
+    <meta name="description" content="Consulta nuestros catálogos digitales de Natura, Avon, Mary Kay y Stanhome en Stefanía Barroso.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@1,700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00a876',
+                        secondary: '#d4af37',
+                        brandText: '#064e3b',
+                        brandSubtext: '#4B5563',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        serif: ['Libre Baskerville', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../styles/colores.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    
+    <!-- Vercel Speed Insights -->
+    <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body class="bg-gray-50/30 text-brandText antialiased flex flex-col min-h-screen">
+
+    <!-- Header (Main Page Style) -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 glass-header">
+        <nav class="w-full px-4 md:px-8 py-2 flex justify-between items-center max-w-7xl mx-auto">
+            <!-- Identity -->
+            <div class="flex items-center space-x-3 md:space-x-4">
+                <img src="../assets/img/logo_2.png" alt="Stefanía Barroso" class="h-12 md:h-16 w-auto object-contain">
+                <h1 class="text-xl md:text-3xl font-bold tracking-tight text-brandText whitespace-nowrap"
+                    style="font-family: 'Dancing Script', cursive;">
+                    Tu Mejor <span class="text-secondary">Consultora</span>
+                </h1>
+            </div>
+
+            <!-- Back Link -->
+            <a href="../index.html" class="flex items-center space-x-2 text-brandSubtext hover:text-primary transition-colors font-bold text-xs tracking-widest uppercase">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                <span>Volver</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="flex-grow pt-28 pb-32 px-4">
+        <div class="max-w-4xl mx-auto space-y-12">
+            
+            <!-- Hero Title -->
+            <div class="text-center space-y-4 py-6">
+                <h2 class="text-4xl md:text-6xl font-black italic uppercase tracking-tight gradient-text">Productos de Belleza</h2>
+                <p class="text-brandSubtext text-lg font-light max-w-2xl mx-auto">Explorá nuestros catálogos digitales de las mejores marcas del mercado.</p>
+            </div>
+
+            <!-- Grid de Catálogos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Catálogo 1: Natura -->
+                <section class="placa-maestra p-8 text-center space-y-6 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <h3 class="text-xl md:text-2xl font-bold italic uppercase">Natura</h3>
+                        <p class="text-brandSubtext text-sm">Consultá la revista digital de este ciclo.</p>
+                    </div>
+                    <div class="max-w-[280px] mx-auto w-full">
+                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf" class="catalog-viewer-trigger block group relative">
+                            <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                            <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
+                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Natura" class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80';">
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Catálogo 2: Avon -->
+                <section class="placa-maestra p-8 text-center space-y-6 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <h3 class="text-xl md:text-2xl font-bold italic uppercase">Avon</h3>
+                        <p class="text-brandSubtext text-sm">Novedades y ofertas exclusivas de cosmética.</p>
+                    </div>
+                    <div class="max-w-[280px] mx-auto w-full">
+                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf" class="catalog-viewer-trigger block group relative">
+                            <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                            <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
+                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Avon" class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=400&q=80';">
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Catálogo 3: Mary Kay -->
+                <section class="placa-maestra p-8 text-center space-y-6 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <h3 class="text-xl md:text-2xl font-bold italic uppercase">Mary Kay</h3>
+                        <p class="text-brandSubtext text-sm">Cuidado de la piel y maquillaje premium.</p>
+                    </div>
+                    <div class="max-w-[280px] mx-auto w-full">
+                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf" class="catalog-viewer-trigger block group relative">
+                            <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                            <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
+                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Mary Kay" class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80';">
+                            </div>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Catálogo 4: Stanhome -->
+                <section class="placa-maestra p-8 text-center space-y-6 flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <h3 class="text-xl md:text-2xl font-bold italic uppercase">Stanhome</h3>
+                        <p class="text-brandSubtext text-sm">Soluciones para el hogar y cuidado personal.</p>
+                    </div>
+                    <div class="max-w-[280px] mx-auto w-full">
+                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf" class="catalog-viewer-trigger block group relative">
+                            <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
+                            <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
+                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Stanhome" class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80';">
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Section 2: Sumate como Revendedor/a (Incorporaciones) -->
+            <section id="sumate" class="placa-maestra p-8 md:p-12 space-y-10">
+                <div class="border-l-4 border-secondary pl-6">
+                    <h3 class="text-2xl md:text-3xl font-bold italic uppercase tracking-tight">Incorporaciones</h3>
+                    <p class="text-brandSubtext mt-2 font-medium italic">Sumate como revendedora independiente</p>
+                </div>
+
+                <div class="grid gap-6">
+                    <div class="sub-placa p-8 space-y-4">
+                        <h4 class="font-bold text-xl text-brandText italic">¿Por qué trabajar con nosotros?</h4>
+                        <p class="text-brandSubtext leading-relaxed">
+                            Buscamos personas emprendedoras que quieran generar sus propios ingresos distribuyendo nuestras piezas exclusivas. 
+                            Ofrecemos un sistema de ganancias competitivo, materiales de apoyo y asesoría constante para que tu emprendimiento crezca.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="sub-placa p-6 flex flex-col items-center text-center space-y-3">
+                            <div class="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round"/></svg>
+                            </div>
+                            <h5 class="font-bold uppercase tracking-wider text-sm">Altas Ganancias</h5>
+                            <p class="text-xs text-brandSubtext">Márgenes de ganancia diseñados para que tu esfuerzo rinda al máximo.</p>
+                        </div>
+                        <div class="sub-placa p-6 flex flex-col items-center text-center space-y-3">
+                            <div class="w-12 h-12 rounded-full bg-secondary/5 flex items-center justify-center text-secondary">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round"/></svg>
+                            </div>
+                            <h5 class="font-bold uppercase tracking-wider text-sm">Apoyo Constante</h5>
+                            <p class="text-xs text-brandSubtext">Te brindamos las herramientas y el conocimiento necesario.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brandText text-white p-8 rounded-[2rem] text-center space-y-6">
+                    <h4 class="text-2xl font-bold italic">¿List@ para empezar?</h4>
+                    <p class="text-gray-300 text-sm max-w-md mx-auto">Hacé clic en el botón de abajo para contactarnos por WhatsApp y recibir toda la información sobre las incorporaciones.</p>
+                    <a href="https://wa.me/5492235869878" target="_blank" class="inline-block bg-primary hover:bg-white hover:text-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-all transform hover:scale-105 shadow-xl">Quiero ser Revendedora</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white text-center border-t border-gray-100">
+        <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">&copy; 2026 Tu Mejor Consultora | Gestión SB</p>
+    </footer>
+
+    <!-- Bottom Navbar (Mobile UX Standard) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] md:w-max px-8 py-4 bg-white/90 backdrop-blur-xl border border-gray-100 rounded-[2.5rem] shadow-2xl flex justify-between md:gap-16 items-center z-50">
+        <a href="../index.html" class="flex flex-col items-center gap-1 group">
+            <svg class="w-6 h-6 text-brandSubtext group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <span class="text-[9px] uppercase font-black tracking-widest text-brandSubtext group-hover:text-primary">Inicio</span>
+        </a>
+        
+        <a href="https://wa.me/5492235869878" target="_blank" class="bg-primary p-4 rounded-full text-white shadow-lg hover:scale-110 transition-all -mt-12 border-[6px] border-white">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.212l-.639 2.333 2.388-.626c.91.564 1.838.924 3.018.925l.001.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.767-5.766zm3.321 8.216c-.143.402-.828.74-1.127.785-.298.044-.597.067-.932-.016-.21-.052-.469-.126-.783-.244-1.332-.501-2.203-1.859-2.27-1.948-.066-.088-.535-.71-.535-1.356s.332-.989.449-1.114c.117-.124.254-.156.34-.156.085 0 .17.001.245.004.081.003.187-.031.293.221l.401.975c.03.076.046.163.003.242-.043.079-.107.127-.213.253-.106.126-.223.211-.318.322-.095.111-.194.232-.083.424.111.193.493.813 1.06 1.317.731.65 1.344.851 1.537.947.194.096.307.08.423-.053.117-.133.496-.58.629-.778.133-.198.266-.165.449-.098.183.066 1.156.545 1.355.644.199.099.332.148.382.233.048.085.048.491-.095.893z"/></svg>
+        </a>
+
+        <a href="#sumate" class="flex flex-col items-center gap-1 group">
+            <svg class="w-6 h-6 text-brandSubtext group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.318l-1.318 2.636L8 8.182l2.636 1.318L12 12.182l1.318-2.636L16 8.182l-2.636-1.318L12 4.318zM12 12.182l-1.318 2.636L8 16.03l2.636 1.318L12 20.03l1.318-2.636L16 16.03l-2.636-1.318L12 12.182z"/></svg>
+            <span class="text-[9px] uppercase font-black tracking-widest text-brandSubtext group-hover:text-primary">Sumate</span>
+        </a>
+    </div>
+
+    <!-- Modal para ver Catálogo -->
+    <div id="catalog-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeCatalog()"></div>
+        
+        <!-- Contenedor del Modal (Placa Maestra Animada) -->
+        <div class="relative bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col z-10 animate-in fade-in zoom-in duration-300">
+            <!-- Header del Modal -->
+            <div class="px-8 py-4 border-b border-gray-100 flex justify-between items-center bg-white">
+                <h3 id="modal-title" class="font-bold text-brandText uppercase tracking-widest text-sm">Visor de Catálogo</h3>
+                <button onclick="closeCatalog()" class="p-2 hover:bg-gray-100 rounded-full transition-colors text-brandText">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Contenido: Iframe del PDF -->
+            <div class="flex-grow bg-gray-100">
+                <iframe id="catalog-iframe" src="" class="w-full h-full border-none"></iframe>
+            </div>
+            
+            <!-- Footer del Modal: Acciones -->
+            <div class="px-8 py-4 bg-gray-50 flex justify-center space-x-4">
+                <a id="download-link" href="" download class="bg-primary hover:bg-white border border-primary text-white hover:text-primary px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all">
+                    Descargar PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCatalog(pdfPath, title) {
+            const modal = document.getElementById('catalog-modal');
+            const iframe = document.getElementById('catalog-iframe');
+            const downloadLink = document.getElementById('download-link');
+            const modalTitle = document.getElementById('modal-title');
+            
+            // Convertimos la ruta relativa en absoluta
+            const absoluteUrl = new URL(pdfPath, window.location.href).href;
+            
+            // Usamos el visor de Google Docs
+            iframe.src = `https://docs.google.com/gview?url=${encodeURIComponent(absoluteUrl)}&embedded=true`;
+            downloadLink.href = pdfPath;
+            if (title) modalTitle.innerText = `Catálogo: ${title}`;
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeCatalog() {
+            const modal = document.getElementById('catalog-modal');
+            const iframe = document.getElementById('catalog-iframe');
+            
+            // Hide modal
+            modal.classList.add('hidden');
+            iframe.src = ''; 
+            document.body.style.overflow = ''; 
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const catalogLinks = document.querySelectorAll('.catalog-viewer-trigger');
+            catalogLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pdfPath = link.getAttribute('data-pdf');
+                    const title = link.closest('section')?.querySelector('h3')?.innerText;
+                    openCatalog(pdfPath, title);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -17,8 +17,8 @@
     <meta property="og:description"
         content="Excelencia en estética y cuidado personal. Conocé nuestros servicios de peluquería, maquillaje y más.">
     <meta property="og:image" content="assets/img/logo_2.png">
- 
-     <link rel="icon" type="image/png" href="assets/img/logo_2.png">
+
+    <link rel="icon" type="image/png" href="assets/img/logo_2.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@1,700&family=Dancing+Script:wght@700&display=swap"
         rel="stylesheet">
@@ -42,117 +42,11 @@
             }
         }
     </script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+    <link rel="stylesheet" href="styles/colores.css">
+    <link rel="stylesheet" href="styles/main.css">
 
-        .glass-header {
-            background: transparent;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-bottom: 1px solid transparent;
-        }
-
-        .header-scrolled {
-            margin-top: 0.75rem;
-            width: 92% !important;
-            left: 4% !important;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 0.2rem 1rem;
-        }
-
-        /* Smooth scaling and coloring for brand elements */
-        #main-header img,
-        #main-header h1,
-        #main-header #btn-acceso,
-        #main-header #menu-btn,
-        #main-header ul {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* Initial Transparent State Colors */
-        #main-header h1,
-        #main-header #btn-acceso,
-        #main-header #menu-btn {
-            color: #ffffff !important;
-        }
-
-        #main-header ul {
-            color: rgba(255, 255, 255, 0.9) !important;
-        }
-
-        /* Scrolled Pill State Colors */
-        #main-header.header-scrolled h1,
-        #main-header.header-scrolled #btn-acceso,
-        #main-header.header-scrolled #menu-btn {
-            color: #064e3b !important;
-        }
-
-        #main-header.header-scrolled ul {
-            color: #4B5563 !important;
-        }
-
-        .header-scrolled img {
-            height: 2.5rem !important;
-            margin-left: 0 !important;
-        }
-
-        .header-scrolled h1 {
-            font-size: 1.5rem !important;
-            opacity: 0.9;
-        }
-
-        @media (min-width: 768px) {
-            .header-scrolled h1 {
-                font-size: 2.5rem !important;
-            }
-
-            .header-scrolled img {
-                height: 3.5rem !important;
-            }
-        }
-
-        /* Custom Scrollbar */
-        .custom-scrollbar::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f3f4f6;
-            border-radius: 10px;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #00a876;
-            border-radius: 10px;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        /* Highlight for items in cart */
-        .product-in-cart {
-            border: 2px solid #00a876 !important;
-            transform: scale(1.02);
-            box-shadow: 0 10px 15px -3px rgba(0, 168, 118, 0.1);
-        }
-        .product-in-cart .add-to-cart-btn {
-            background-color: #00a876;
-            color: white;
-        }
-    </style>
+    <!-- Vercel Speed Insights -->
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body class="bg-white text-brandText antialiased scroll-smooth overflow-x-hidden w-full m-0 p-0">
@@ -325,8 +219,22 @@
                         </div>
                         <span class="text-sm font-bold tracking-tight text-brandText">promo</span>
                     </div>
-                    <!-- 2. Joyas y Semijoyas -->
-                    <a href="joyas.html" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
+                    <!-- 2. Productos de Belleza -->
+                    <a href="productos-belleza/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
+                        <div
+                            class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-bold tracking-tight text-brandText text-center">productos
+                            de<br>belleza</span>
+                    </a>
+                    <!-- 3. Joyas y Semijoyas -->
+                    <a href="joyas/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
                         <div
                             class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -338,19 +246,6 @@
                         </div>
                         <span class="text-sm font-bold tracking-tight text-brandText text-center">joyas y<br>semijoyas</span>
                     </a>
-                    <!-- 3. Perfumería -->
-                    <div class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div
-                            class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
-                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
-                                </path>
-                            </svg>
-                        </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText">perfumería</span>
-                    </div>
                     <!-- 4. Maquillaje -->
                     <div class="flex flex-col items-center group cursor-pointer min-w-[100px]">
                         <div
