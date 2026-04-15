@@ -27,46 +27,11 @@
             }
         }
     </script>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .glass-header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .placa-maestra {
-            background: #ffffff;
-            border-radius: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            border: 1px solid #f3f4f6;
-        }
-
-        .sub-placa {
-            background: #ffffff;
-            border-radius: 1.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
-            border: 1px solid #f9fafb;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .sub-placa:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #064e3b 0%, #00a876 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/colores.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    
+    <!-- Vercel Speed Insights -->
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body class="bg-gray-50/30 text-brandText antialiased flex flex-col min-h-screen">
@@ -76,7 +41,7 @@
         <nav class="w-full px-4 md:px-8 py-2 flex justify-between items-center max-w-7xl mx-auto">
             <!-- Identity -->
             <div class="flex items-center space-x-3 md:space-x-4">
-                <img src="assets/img/logo_2.png" alt="Stefanía Barroso" class="h-12 md:h-16 w-auto object-contain">
+                <img src="../assets/img/logo_2.png" alt="Stefanía Barroso" class="h-12 md:h-16 w-auto object-contain">
                 <h1 class="text-xl md:text-3xl font-bold tracking-tight text-brandText whitespace-nowrap"
                     style="font-family: 'Dancing Script', cursive;">
                     Tu Mejor <span class="text-secondary">Consultora</span>
@@ -84,7 +49,7 @@
             </div>
 
             <!-- Back Link -->
-            <a href="index.html" class="flex items-center space-x-2 text-brandSubtext hover:text-primary transition-colors font-bold text-xs tracking-widest uppercase">
+            <a href="../index.html" class="flex items-center space-x-2 text-brandSubtext hover:text-primary transition-colors font-bold text-xs tracking-widest uppercase">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
                 <span>Volver</span>
             </a>
@@ -109,14 +74,14 @@
 
                 <!-- Clickable Image Button -->
                 <div class="max-w-md mx-auto">
-                    <a href="assets/docs/catalogo_joyas.pdf" target="_blank" class="block group relative">
+                    <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf" class="catalog-viewer-trigger block group relative">
                         <!-- Efecto de borde brillante -->
                         <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
                         
                         <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
                             <!-- La imagen que me pasarás/subirás -->
                             <!-- Recomiendo usar una imagen de 800x1000px aprox -->
-                            <img src="assets/img/boton_catalogo.jpg" alt="Ver Catálogo" class="w-full h-auto rounded-[1.8rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80';">
+                            <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo" class="w-full h-auto rounded-[1.8rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80';">
                             
                             <!-- Overlay informativo -->
                             <div class="absolute bottom-6 left-0 w-full px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -181,7 +146,7 @@
 
     <!-- Bottom Navbar (Mobile UX Standard) -->
     <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] md:w-max px-8 py-4 bg-white/90 backdrop-blur-xl border border-gray-100 rounded-[2.5rem] shadow-2xl flex justify-between md:gap-16 items-center z-50">
-        <a href="index.html" class="flex flex-col items-center gap-1 group">
+        <a href="../index.html" class="flex flex-col items-center gap-1 group">
             <svg class="w-6 h-6 text-brandSubtext group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
             <span class="text-[9px] uppercase font-black tracking-widest text-brandSubtext group-hover:text-primary">Inicio</span>
         </a>
@@ -196,5 +161,74 @@
         </a>
     </div>
 
+    <!-- Modal para ver Catálogo -->
+    <div id="catalog-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeCatalog()"></div>
+        
+        <!-- Contenedor del Modal (Placa Maestra Animada) -->
+        <div class="relative bg-white w-full max-w-5xl h-[90vh] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col z-10 animate-in fade-in zoom-in duration-300">
+            <!-- Header del Modal -->
+            <div class="px-8 py-4 border-b border-gray-100 flex justify-between items-center bg-white">
+                <h3 class="font-bold text-brandText uppercase tracking-widest text-sm">Visor de Catálogo</h3>
+                <button onclick="closeCatalog()" class="p-2 hover:bg-gray-100 rounded-full transition-colors text-brandText">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Contenido: Iframe del PDF -->
+            <div class="flex-grow bg-gray-100">
+                <iframe id="catalog-iframe" src="" class="w-full h-full border-none"></iframe>
+            </div>
+            
+            <!-- Footer del Modal: Acciones -->
+            <div class="px-8 py-4 bg-gray-50 flex justify-center space-x-4">
+                <a id="download-link" href="" download class="bg-primary hover:bg-white border border-primary text-white hover:text-primary px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all">
+                    Descargar PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCatalog(pdfPath, title) {
+            const modal = document.getElementById('catalog-modal');
+            const iframe = document.getElementById('catalog-iframe');
+            const downloadLink = document.getElementById('download-link');
+            
+            // Convertimos la ruta relativa en absoluta para que Google pueda acceder a ella
+            const absoluteUrl = new URL(pdfPath, window.location.href).href;
+            
+            // Usamos el visor de Google Docs para forzar la visualización online
+            iframe.src = `https://docs.google.com/gview?url=${encodeURIComponent(absoluteUrl)}&embedded=true`;
+            downloadLink.href = pdfPath;
+            
+            // Show modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Bloquear scroll
+        }
+
+        function closeCatalog() {
+            const modal = document.getElementById('catalog-modal');
+            const iframe = document.getElementById('catalog-iframe');
+            
+            // Hide modal
+            modal.classList.add('hidden');
+            iframe.src = ''; // Limpiar src para parar carga
+            document.body.style.overflow = ''; // Restaurar scroll
+        }
+
+        // Listener para las imágenes de catálogo
+        document.addEventListener('DOMContentLoaded', () => {
+            const catalogLinks = document.querySelectorAll('.catalog-viewer-trigger');
+            catalogLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pdfPath = link.getAttribute('data-pdf');
+                    openCatalog(pdfPath);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

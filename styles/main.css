@@ -1,0 +1,96 @@
+/* main.css - Estilos Globales de Gestión SB */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    color: var(--brand-text);
+}
+
+/* --- Header y Navegación --- */
+.glass-header {
+    background: transparent;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-bottom: 1px solid transparent;
+}
+
+.header-scrolled {
+    margin-top: 0.75rem;
+    width: 92% !important;
+    left: 4% !important;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.2rem 1rem;
+}
+
+/* --- Placas de Información --- */
+.placa-maestra {
+    background: var(--bg-white);
+    border-radius: var(--radius-placa);
+    box-shadow: var(--shadow-md);
+    border: 1px solid #f3f4f6;
+}
+
+.sub-placa {
+    background: var(--bg-white);
+    border-radius: var(--radius-subplaca);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f9fafb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sub-placa:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Utilidades --- */
+.gradient-text {
+    background: linear-gradient(135deg, var(--brand-text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Highlight for items in cart */
+.product-in-cart {
+    border: 2px solid var(--primary) !important;
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(0, 168, 118, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.product-in-cart .add-to-cart-btn {
+    background-color: var(--primary);
+    color: white;
+}
