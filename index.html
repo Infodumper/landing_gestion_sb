@@ -23,6 +23,7 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Libre+Baskerville:ital,wght@1,700&family=Dancing+Script:wght@700&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -898,7 +899,7 @@
                         <table class="w-full">
                             <thead class="border-b border-gray-100 italic text-brandText/60 text-[10px] uppercase">
                                 <tr>
-                                    <th class="py-2 text-left">Proucto</th>
+                                    <th class="py-2 text-left">Producto</th>
                                     <th class="py-2 text-center">Cant.</th>
                                     <th class="py-2 text-right">Subtotal</th>
                                 </tr>
@@ -970,7 +971,7 @@
                 const encoded = encodeURIComponent(message);
                 const wpUrl = `https://wa.me/5492235869878?text=${encoded}`;
 
-                window.open(wpUrl, '_blank');
+                window.location.href = wpUrl;
             },
 
             clear() {
@@ -981,7 +982,9 @@
             }
         };
 
-        SB_Cart.init();
+        document.addEventListener('DOMContentLoaded', () => {
+            SB_Cart.init();
+        });
     </script>
 </body>
 
