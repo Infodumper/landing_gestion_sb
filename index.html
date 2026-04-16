@@ -710,42 +710,8 @@
             initDynamicCatalogs();
         }
 
-        async function initDynamicCatalogs() {
-            try {
-                const response = await fetch('/api/get-catalogs');
-                const result = await response.json();
-                
-                if (result.status === 'success' && result.data) {
-                    console.log('[DRIVE] Catálogos cargados:', result.data);
-                    const catalogs = result.data;
-                    
-                    // Actualizar link de Belleza (prioridad según marca)
-                    const beautyCatalog = catalogs.natura || catalogs.marykay || catalogs.belleza || catalogs.avon || catalogs.stanhome;
-                    if (beautyCatalog) {
-                        const el = document.getElementById('cat-link-belleza');
-                        if (el) {
-                            el.href = beautyCatalog.viewLink;
-                            el.target = "_blank";
-                            console.log('[DRIVE] Home - Belleza actualizado a:', beautyCatalog.name);
-                        }
-                    }
-                    
-                    // Actualizar link de Joyas
-                    if (catalogs.joyas) {
-                        const el = document.getElementById('cat-link-joyas');
-                        if (el) {
-                            el.href = catalogs.joyas.viewLink;
-                            el.target = "_blank";
-                            console.log('[DRIVE] Joyas actualizado a:', catalogs.joyas.name);
-                        }
-                    }
-                } else if (result.error || result.message) {
-                    console.warn('[DRIVE] API configurada pero con error:', result.error || result.message);
-                }
-            } catch (err) {
-                console.warn('[DRIVE] No se pudo conectar con la API de catálogos. Usando fallback local.');
-            }
-        }
+        // El enlace de categorías en la Home ahora se maneja puramente por navegación
+        // a las páginas internas de /productos-belleza/ y /joyas/
     </script>
 </body>
 
