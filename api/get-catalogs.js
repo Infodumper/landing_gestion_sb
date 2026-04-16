@@ -40,14 +40,18 @@ module.exports = async (req, res) => {
      * Buscamos palabras clave dentro del nombre del archivo para clasificarlo.
      */
     files.forEach(file => {
-      const fileName = file.name.toLowerCase();
+      // Normalizamos el nombre: minúsculas y quitar acentos (ej: Avón -> avon)
+      const fileName = file.name.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      
       let category = 'otros';
 
       // Categorización granular para marcas de belleza
       if (fileName.includes('natura'))                 category = 'natura';
       else if (fileName.includes('avon'))              category = 'avon';
       else if (fileName.includes('mary') || fileName.includes('kay')) category = 'marykay';
-      else if (fileName.includes('stanhome'))          category = 'stanhome';
+      else if (fileName.includes('millanel'))          category = 'millanel';
       else if (fileName.includes('joya'))              category = 'joyas';
       else if (fileName.includes('belleza') || fileName.includes('perfu')) category = 'belleza';
 

@@ -23,3 +23,5 @@ instalar.php*
 # Bóvedas de Obsidian (Documentación Local)
 obsidian_gestion/
 obsidian_gestion-sb/
+# Catálogos Pesados (Drive)
+assets/docs/

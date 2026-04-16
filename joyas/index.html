@@ -42,6 +42,9 @@
     <!-- Vercel Speed Insights -->
     <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
+    
+    <!-- PDF.js para generación de miniaturas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 </head>
 
 <body class="bg-gray-50/30 text-brandText antialiased flex flex-col min-h-screen">
@@ -88,14 +91,14 @@
                 </div>
 
                 <div class="max-w-md mx-auto">
-                    <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf"
+                    <a href="#" data-pdf="../assets/docs/perla_negra.pdf"
                         class="catalog-viewer-trigger block group relative" role="button"
                         aria-label="Abrir Catálogo de Joyas en PDF">
                         <!-- Halo brillante -->
                         <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2.5rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
 
                         <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
-                            <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo de Joyas"
+                            <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo de Joyas" id="img-joyas"
                                 class="w-full h-auto rounded-[1.8rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500"
                                 loading="lazy" width="600" height="750"
                                 onerror="this.src='https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80';">
@@ -177,33 +180,6 @@
         </p>
     </footer>
 
-    <!-- ── Bottom Navbar (Mobile UX) ────────────────── -->
-    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] md:w-max px-8 py-4 bg-white/90 backdrop-blur-xl border border-gray-100 rounded-[2.5rem] shadow-2xl flex justify-between md:gap-16 items-center z-50"
-        aria-label="Navegación inferior">
-        <a href="../index.html" class="flex flex-col items-center gap-1 group">
-            <svg class="w-6 h-6 text-brandSubtext group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-            </svg>
-            <span class="text-[9px] uppercase font-black tracking-widest text-brandSubtext group-hover:text-primary">Inicio</span>
-        </a>
-
-        <a href="https://wa.me/5492235869878" target="_blank" rel="noopener noreferrer"
-            class="bg-primary p-4 rounded-full text-white shadow-lg hover:scale-110 transition-all -mt-12 border-[6px] border-white"
-            aria-label="Contactar por WhatsApp">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.212l-.639 2.333 2.388-.626c.91.564 1.838.924 3.018.925l.001.001c3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.587-5.766-5.767-5.766zm3.321 8.216c-.143.402-.828.74-1.127.785-.298.044-.597.067-.932-.016-.21-.052-.469-.126-.783-.244-1.332-.501-2.203-1.859-2.27-1.948-.066-.088-.535-.71-.535-1.356s.332-.989.449-1.114c.117-.124.254-.156.34-.156.085 0 .17.001.245.004.081.003.187-.031.293.221l.401.975c.03.076.046.163.003.242-.043.079-.107.127-.213.253-.106.126-.223.211-.318.322-.095.111-.194.232-.083.424.111.193.493.813 1.06 1.317.731.65 1.344.851 1.537.947.194.096.307.08.423-.053.117-.133.496-.58.629-.778.133-.198.266-.165.449-.098.183.066 1.156.545 1.355.644.199.099.332.148.382.233.048.085.048.491-.095.893z"/>
-            </svg>
-        </a>
-
-        <a href="#sumate" class="flex flex-col items-center gap-1 group">
-            <svg class="w-6 h-6 text-brandSubtext group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 4.318l-1.318 2.636L8 8.182l2.636 1.318L12 12.182l1.318-2.636L16 8.182l-2.636-1.318L12 4.318zM12 12.182l-1.318 2.636L8 16.03l2.636 1.318L12 20.03l1.318-2.636L16 16.03l-2.636-1.318L12 12.182z"/>
-            </svg>
-            <span class="text-[9px] uppercase font-black tracking-widest text-brandSubtext group-hover:text-primary">Sumate</span>
-        </a>
-    </nav>
 
     <!-- ── Modal Visor de Catálogo ──────────────────── -->
     <div id="catalog-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
@@ -275,6 +251,13 @@
         });
 
         document.addEventListener('DOMContentLoaded', () => {
+            if (window.pdfjsLib) {
+                pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+            }
+
+            // Generar miniatura real para Joyas
+            generateThumbnail('../assets/docs/perla_negra.pdf', 'img-joyas');
+
             document.querySelectorAll('.catalog-viewer-trigger').forEach(link => {
                 link.addEventListener('click', e => {
                     e.preventDefault();
@@ -282,6 +265,23 @@
                 });
             });
         });
+
+        async function generateThumbnail(pdfPath, imgId) {
+            if (!window.pdfjsLib) return;
+            try {
+                const img = document.getElementById(imgId);
+                const pdf = await pdfjsLib.getDocument(pdfPath).promise;
+                const page = await pdf.getPage(1);
+                const viewport = page.getViewport({ scale: 0.8 });
+                const canvas = document.createElement('canvas');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                await page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
+                img.src = canvas.toDataURL();
+            } catch (e) {
+                console.error('Error generating thumbnail:', e);
+            }
+        }
     </script>
 </body>
 </html>
