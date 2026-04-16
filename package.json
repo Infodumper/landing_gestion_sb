@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Infodumper/landing_gestion_sb#readme",
   "dependencies": {
-    "@vercel/speed-insights": "^2.0.0"
+    "@vercel/speed-insights": "^2.0.0",
+    "googleapis": "^171.4.0"
   }
 }

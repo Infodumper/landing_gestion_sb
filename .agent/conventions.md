@@ -8,9 +8,10 @@ Estándares de desarrollo para asegurar la coherencia en todos los módulos gene
 - **Indentación**: 4 espacios (o tabuladores consistentes con el archivo existente).
 
 ## Arquitectura y Lógica
-- **Separación de Capas**: Separar la lógica de negocio (Services/Actions) de las vistas (Vistas/Partial).
-- **No SQL en Vistas**: Las consultas a la base de datos deben estar en archivos `ajax_*.php` o controladores, nunca directamente en el HTML de la vista.
-- **Validación de Datos**: Toda entrada de usuario debe ser saneada antes de usarse en una query SQL (usar Prepared Statements con PDO).
+- **Separación de Capas**: Separar la lógica de negocio (Serverless en `/api`) de la capa de presentación (HTML estático).
+- **Serverless First**: Toda lógica dinámica (DB, APIs externas como Drive) debe habitar en la carpeta `/api` como funciones independientes de Node.js.
+- **Seguridad**: Nunca exponer credenciales en el cliente. Usar `process.env` y secretos de Vercel.
+- **Validación de Datos**: Validar formatos de entrada en las funciones de la API antes de procesar solicitudes.
 
 ## UI / UX (Tailwind)
 - **Modo Oscuro/Claro**: Usar clases de Tailwind que soporten ambos modos.

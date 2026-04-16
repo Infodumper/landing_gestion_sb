@@ -247,7 +247,7 @@
                     </button>
 
                     <!-- Productos de Belleza -->
-                    <a href="productos-belleza/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
+                    <a href="productos-belleza/" id="cat-link-belleza" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
                         <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -259,7 +259,7 @@
                     </a>
 
                     <!-- Joyas y Semijoyas -->
-                    <a href="joyas/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
+                    <a href="joyas/" id="cat-link-joyas" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
                         <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -359,14 +359,14 @@
         <div class="w-full max-w-5xl mx-auto px-4 flex flex-row items-stretch gap-6 md:gap-16">
             <!-- Imagen de Perfil -->
             <div class="w-1/2">
-                <img src="assets/img/stefania_profile.png" alt="Stefanía Barroso — Asesora de Belleza"
+                <img src="assets/img/stefania_profile.png" alt="Stefanía Barroso — Consultora de Belleza"
                     class="w-full h-full object-cover rounded-[1rem] shadow-sm border border-gray-100 min-h-[250px]"
                     loading="lazy" width="600" height="400">
             </div>
             <!-- Texto -->
             <div class="w-1/2 flex flex-col items-start justify-center text-left py-2">
                 <h2 id="about-heading" class="text-lg md:text-2xl font-bold text-black mb-3">
-                    Tu mejor asesora de belleza
+                    Tu mejor consultora de belleza
                 </h2>
                 <p class="text-sm md:text-xl text-gray-800 leading-relaxed font-normal mb-6">
                     Nuestra razón de ser es crear y comercializar productos que promuevan el bienestar y realcen tu esencia natural.
@@ -701,9 +701,50 @@
 
         // Init del carrito cuando el DOM esté listo
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => SB_Cart.init());
+            document.addEventListener('DOMContentLoaded', () => {
+                SB_Cart.init();
+                initDynamicCatalogs();
+            });
         } else {
             SB_Cart.init();
+            initDynamicCatalogs();
+        }
+
+        async function initDynamicCatalogs() {
+            try {
+                const response = await fetch('/api/get-catalogs');
+                const result = await response.json();
+                
+                if (result.status === 'success' && result.data) {
+                    console.log('[DRIVE] Catálogos cargados:', result.data);
+                    const catalogs = result.data;
+                    
+                    // Actualizar link de Belleza (prioridad según marca)
+                    const beautyCatalog = catalogs.natura || catalogs.marykay || catalogs.belleza || catalogs.avon || catalogs.stanhome;
+                    if (beautyCatalog) {
+                        const el = document.getElementById('cat-link-belleza');
+                        if (el) {
+                            el.href = beautyCatalog.viewLink;
+                            el.target = "_blank";
+                            console.log('[DRIVE] Home - Belleza actualizado a:', beautyCatalog.name);
+                        }
+                    }
+                    
+                    // Actualizar link de Joyas
+                    if (catalogs.joyas) {
+                        const el = document.getElementById('cat-link-joyas');
+                        if (el) {
+                            el.href = catalogs.joyas.viewLink;
+                            el.target = "_blank";
+                            console.log('[DRIVE] Joyas actualizado a:', catalogs.joyas.name);
+                        }
+                    }
+                } else if (result.error || result.message) {
+                    console.warn('[DRIVE] API configurada pero con error:', result.error || result.message);
+                }
+            } catch (err) {
+                console.warn('[DRIVE] No se pudo conectar con la API de catálogos. Usando fallback local.');
+            }
         }
     </script>
 </body>

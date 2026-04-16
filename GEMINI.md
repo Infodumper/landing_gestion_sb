@@ -67,7 +67,7 @@ Todo módulo del ecosistema debe converger obligatoriamente hacia las normativas
 
 La infraestructura backend se gestiona mediante componentes especializados ("Skills") que garantizan la modularidad:
 
-- **client_manager**: Orquestador transaccional (CRUD) y Middleware de validación de datos de clientes.
+- **catalog_manager**: Orquestador transaccional (CRUD), gestión de catálogos dinámicos vía Google Drive API y validación de datos.
 - **login_manager**: Gestión de autenticación biométrica, JWT/SESION y seguridad sin recarga de vistas.
 - **menu_navigator**: Controlador de estado SPA y ruteo dinámico para interfaces Mobile-first (Bottom Navbar).
 - **sales_manager**: Gestión de procesos de venta, carritos y pedidos.

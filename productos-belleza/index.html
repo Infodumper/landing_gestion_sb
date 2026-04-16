@@ -91,12 +91,12 @@
                         <p class="text-brandSubtext text-sm">Consultá la revista digital de este ciclo.</p>
                     </div>
                     <div class="max-w-[280px] mx-auto w-full">
-                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf"
+                        <a href="#" id="trigger-natura" data-pdf="../assets/docs/catalogo_joyas.pdf"
                             class="catalog-viewer-trigger block group relative" role="button"
                             aria-label="Abrir Catálogo Natura en PDF">
                             <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
                             <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
-                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo Natura"
+                                <img src="../assets/img/boton_catalogo.jpg" id="img-natura" alt="Ver Catálogo Natura"
                                     class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500"
                                     loading="lazy" width="280" height="350"
                                     onerror="this.src='https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=400&q=80';">
@@ -113,12 +113,12 @@
                         <p class="text-brandSubtext text-sm">Novedades y ofertas exclusivas de cosmética.</p>
                     </div>
                     <div class="max-w-[280px] mx-auto w-full">
-                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf"
+                        <a href="#" id="trigger-avon" data-pdf="../assets/docs/catalogo_joyas.pdf"
                             class="catalog-viewer-trigger block group relative" role="button"
                             aria-label="Abrir Catálogo Avon en PDF">
                             <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
                             <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
-                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo Avon"
+                                <img src="../assets/img/boton_catalogo.jpg" id="img-avon" alt="Ver Catálogo Avon"
                                     class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500"
                                     loading="lazy" width="280" height="350"
                                     onerror="this.src='https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=400&q=80';">
@@ -135,12 +135,12 @@
                         <p class="text-brandSubtext text-sm">Cuidado de la piel y maquillaje premium.</p>
                     </div>
                     <div class="max-w-[280px] mx-auto w-full">
-                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf"
+                        <a href="#" id="trigger-marykay" data-pdf="../assets/docs/catalogo_joyas.pdf"
                             class="catalog-viewer-trigger block group relative" role="button"
                             aria-label="Abrir Catálogo Mary Kay en PDF">
                             <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
                             <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
-                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo Mary Kay"
+                                <img src="../assets/img/boton_catalogo.jpg" id="img-marykay" alt="Ver Catálogo Mary Kay"
                                     class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500"
                                     loading="lazy" width="280" height="350"
                                     onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80';">
@@ -157,12 +157,12 @@
                         <p class="text-brandSubtext text-sm">Soluciones para el hogar y cuidado personal.</p>
                     </div>
                     <div class="max-w-[280px] mx-auto w-full">
-                        <a href="#" data-pdf="../assets/docs/catalogo_joyas.pdf"
+                        <a href="#" id="trigger-stanhome" data-pdf="../assets/docs/catalogo_joyas.pdf"
                             class="catalog-viewer-trigger block group relative" role="button"
                             aria-label="Abrir Catálogo Stanhome en PDF">
                             <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
                             <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
-                                <img src="../assets/img/boton_catalogo.jpg" alt="Ver Catálogo Stanhome"
+                                <img src="../assets/img/boton_catalogo.jpg" id="img-stanhome" alt="Ver Catálogo Stanhome"
                                     class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500"
                                     loading="lazy" width="280" height="350"
                                     onerror="this.src='https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80';">
@@ -329,12 +329,47 @@
             document.querySelectorAll('.catalog-viewer-trigger').forEach(link => {
                 link.addEventListener('click', e => {
                     e.preventDefault();
+                    // Usamos el atributo data-pdf que debería estar actualizado por el script dinámico
                     const pdfPath = link.getAttribute('data-pdf');
                     const title   = link.closest('section')?.querySelector('h3')?.innerText;
-                    openCatalog(pdfPath, title);
+                    if (pdfPath && pdfPath !== '#') {
+                        openCatalog(pdfPath, title);
+                    }
                 });
             });
+
+            // Carga Dinámica de Catálogos desde Drive
+            initDynamicCatalogs();
         });
+
+        async function initDynamicCatalogs() {
+            try {
+                const response = await fetch('/api/get-catalogs');
+                const result = await response.json();
+                
+                if (result.status === 'success' && result.data) {
+                    const catalogs = result.data;
+                    const mapping = {
+                        'natura':   'trigger-natura',
+                        'avon':     'trigger-avon',
+                        'marykay':  'trigger-marykay',
+                        'stanhome': 'trigger-stanhome'
+                    };
+
+                    Object.keys(mapping).forEach(cat => {
+                        if (catalogs[cat]) {
+                            const trigger = document.getElementById(mapping[cat]);
+                            if (trigger) {
+                                trigger.setAttribute('data-pdf', catalogs[cat].viewLink);
+                                console.log(`[DRIVE] Actualizado ${cat}:`, catalogs[cat].name);
+                            }
+                        }
+                    });
+                }
+            } catch (err) {
+                console.warn('[DRIVE] Error al cargar catálogos dinámicos:', err);
+            }
+        }
     </script>
 </body>
 </html>

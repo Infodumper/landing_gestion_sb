@@ -85,7 +85,7 @@ Cada módulo de aplicación se rige por **una Directiva** propia y se apalanca e
 
 ### Módulo: Ventas / Pedidos (Directivas: build_ventas.md / build_pedidos.md)
 - **sales_manager**: Gestión de procesos de venta y carritos.
-- **catalog_manager**: Administración de productos y stock.
+- **catalog_manager**: Administración de productos, stock y catálogos dinámicos (Google Drive).
 - **billing_helper**: Lógica de cobros, parciales y totales.
 
 ---

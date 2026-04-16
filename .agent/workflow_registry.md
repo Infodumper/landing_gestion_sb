@@ -17,4 +17,5 @@ Este archivo define el flujo estándar que siguen los agentes para garantizar re
 
 ## Workflows Disponibles
 
-- [create_module.md](file:///c:/TGPN/consultora/.agent/workflows/create_module.md): Proceso para crear un módulo nuevo desde cero.
+- [audit_deploy.md](file:///c:/TGPN/landing_gestion_sb/.agent/workflows/audit_deploy.md): Validación de integración con APIs y SEO post-despliegue.
+- [fix_styles.md](file:///c:/TGPN/landing_gestion_sb/.agent/workflows/fix_styles.md): Procedimiento para cambios estéticos globales.
