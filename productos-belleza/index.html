@@ -135,7 +135,7 @@
                         <p class="text-brandSubtext text-sm">Cuidado de la piel y maquillaje premium.</p>
                     </div>
                     <div class="max-w-[280px] mx-auto w-full">
-                        <a href="#" id="trigger-marykay" data-pdf="../assets/docs/catalogo_joyas.pdf"
+                        <a href="#" id="trigger-marykay" data-pdf="../assets/docs/mary_kay.pdf"
                             class="catalog-viewer-trigger block group relative" role="button"
                             aria-label="Abrir Catálogo Mary Kay en PDF">
                             <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
@@ -302,9 +302,21 @@
             const iframe = document.getElementById('catalog-iframe');
             const dl     = document.getElementById('download-link');
             const h      = document.getElementById('modal-heading');
-            const absUrl = new URL(pdfPath, location.href).href;
+            
+            // Lógica inteligente de visualización:
+            // Si el archivo es local o de Google Drive (webViewLink), ajustamos la URL
+            let finalUrl = pdfPath;
+            
+            if (pdfPath.startsWith('http') && !pdfPath.includes('drive.google.com')) {
+                // Para links públicos externos (que no sean Drive), usamos GView
+                finalUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfPath)}&embedded=true`;
+            } else if (pdfPath.includes('drive.google.com')) {
+                // Si es de Drive, usamos el visor nativo de Drive directamente
+                finalUrl = pdfPath.replace('/view', '/preview').replace('?usp=drivesdk', '');
+            }
+            // Si es local (../assets...), simplemente usamos la URL relativa en el iframe
 
-            iframe.src = `https://docs.google.com/gview?url=${encodeURIComponent(absUrl)}&embedded=true`;
+            iframe.src = finalUrl;
             dl.href    = pdfPath;
             if (title) h.innerText = `Catálogo: ${title}`;
             modal.classList.remove('hidden');
