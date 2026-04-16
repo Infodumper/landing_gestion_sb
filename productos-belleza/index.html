@@ -42,6 +42,9 @@
     <!-- Vercel Speed Insights -->
     <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <!-- PDF.js para visualización garantizada -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 </head>
 
 <body class="bg-gray-50/30 text-brandText antialiased flex flex-col min-h-screen">
@@ -303,20 +306,18 @@
             const dl     = document.getElementById('download-link');
             const h      = document.getElementById('modal-heading');
             
-            // Lógica inteligente de visualización:
-            // Si el archivo es local o de Google Drive (webViewLink), ajustamos la URL
-            let finalUrl = pdfPath;
+            // Usamos nuestro propio visor especializado para garantizar que se vea "dentro de la pantalla"
+            // sin importar el navegador o si es móvil/PC.
+            let viewerUrl = `../assets/viewer.html?file=${encodeURIComponent(pdfPath)}`;
             
-            if (pdfPath.startsWith('http') && !pdfPath.includes('drive.google.com')) {
-                // Para links públicos externos (que no sean Drive), usamos GView
-                finalUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pdfPath)}&embedded=true`;
-            } else if (pdfPath.includes('drive.google.com')) {
-                // Si es de Drive, usamos el visor nativo de Drive directamente
-                finalUrl = pdfPath.replace('/view', '/preview').replace('?usp=drivesdk', '');
+            // Si es de Google Drive, el visor nativo de preview suele ser muy bueno,
+            // pero para local usamos nuestro viewer.html sí o sí.
+            if (pdfPath.includes('drive.google.com')) {
+                iframe.src = pdfPath.replace('/view', '/preview').replace('?usp=drivesdk', '');
+            } else {
+                iframe.src = viewerUrl;
             }
-            // Si es local (../assets...), simplemente usamos la URL relativa en el iframe
 
-            iframe.src = finalUrl;
             dl.href    = pdfPath;
             if (title) h.innerText = `Catálogo: ${title}`;
             modal.classList.remove('hidden');
