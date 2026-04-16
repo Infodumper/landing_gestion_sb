@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
     // Listar archivos de la carpeta, ordenados por fecha de modificación descendente
     const response = await drive.files.list({
       q: `'${FOLDER_ID}' in parents and trashed = false`,
-      fields: 'files(id, name, webContentLink, webViewLink, modifiedTime, mimeType)',
+      fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
       orderBy: 'modifiedTime desc',
     });
 
@@ -58,6 +58,7 @@ module.exports = async (req, res) => {
           name: file.name,
           viewLink: file.webViewLink,
           downloadLink: file.webContentLink,
+          thumbnail: file.thumbnailLink,
           modified: file.modifiedTime,
           mimeType: file.mimeType
         };

@@ -372,10 +372,18 @@
                     Object.keys(mapping).forEach(cat => {
                         if (catalogs[cat]) {
                             const trigger = document.getElementById(mapping[cat]);
+                            const img = document.getElementById(`img-${cat}`);
+                            
                             if (trigger) {
                                 trigger.setAttribute('data-pdf', catalogs[cat].viewLink);
-                                console.log(`[DRIVE] Actualizado ${cat}:`, catalogs[cat].name);
                             }
+                            if (img && catalogs[cat].thumbnail) {
+                                // Google Drive thumbnails suelen venir con un tamaño pequeño por defecto (=s220)
+                                // Intentamos pedir una versión un poco más grande (=s600)
+                                img.src = catalogs[cat].thumbnail.replace(/=s\d+/, '=s600');
+                                console.log(`[DRIVE] Miniatura cargada para ${cat}`);
+                            }
+                            console.log(`[DRIVE] Actualizado ${cat}:`, catalogs[cat].name);
                         }
                     });
                 }
