@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
       if (fileName.includes('carousel') && isImg) {
           carouselImages.push({
               name: fileName,
-              url: file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+/, '=s1600') : file.webViewLink,
+              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`, // URL Directa y de alta calidad
               order: parseInt(fileName.match(/\d+/) || [99])[0]
           });
           return;
