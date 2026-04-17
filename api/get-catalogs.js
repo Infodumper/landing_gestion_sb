@@ -50,13 +50,16 @@ module.exports = async (req, res) => {
             orderBy: 'modifiedTime desc',
           });
           if (subResponse.data.files) {
-            files = [...files, ...subResponse.data.files];
+            const enrichedFiles = subResponse.data.files.map(f => ({ ...f, folderName: folder.name.toLowerCase() }));
+            files = [...files, ...enrichedFiles];
           }
       }
     }
 
     const latestByLine = {};
     const carouselImages = [];
+    const maquillajeImages = [];
+    const peluqueriaImages = [];
 
     files.forEach(file => {
       // Normalizamos el nombre: minúsculas y quitar acentos (ej: página -> pagina)
@@ -99,6 +102,26 @@ module.exports = async (req, res) => {
           return;
       }
 
+      // Especial para Maquillaje (Tira de imágenes)
+      if (file.folderName === 'maquillaje' && isImg) {
+          maquillajeImages.push({
+              name: fileName,
+              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
+              order: parseInt(fileName.match(/\d+/) || [99])[0]
+          });
+          return;
+      }
+
+      // Especial para Peluquería (Tira de imágenes)
+      if (file.folderName === 'peluqueria' && isImg) {
+          peluqueriaImages.push({
+              name: fileName,
+              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
+              order: parseInt(fileName.match(/\d+/) || [99])[0]
+          });
+          return;
+      }
+
       // Si no existe la entrada para esta categoría, la inicializamos
       if (!latestByLine[category]) {
         latestByLine[category] = {
@@ -126,8 +149,10 @@ module.exports = async (req, res) => {
       }
     });
 
-    // Ordenar imágenes del carrusel por el número en el nombre
+    // Ordenar imágenes
     carouselImages.sort((a, b) => a.order - b.order);
+    maquillajeImages.sort((a, b) => a.order - b.order);
+    peluqueriaImages.sort((a, b) => a.order - b.order);
 
     // Cachear respuesta por 1 hora en el borde de Vercel
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
@@ -135,7 +160,9 @@ module.exports = async (req, res) => {
       status: 'success',
       data: {
           catalogs: latestByLine,
-          carousel: carouselImages
+          carousel: carouselImages,
+          maquillaje: maquillajeImages,
+          peluqueria: peluqueriaImages
       }
     });
 
