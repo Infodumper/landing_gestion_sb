@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos de Belleza | Catálogos Digitales | Tu Mejor Consultora</title>
-    <meta name="description" content="Consultá los catálogos digitales de Natura, Avon, Mary Kay y Millanel. Stefanía Barroso — Tu Mejor Consultora en Mar del Plata.">
+    <meta name="description" content="Consultá los catálogos digitales de Natura, Avon, Mary Kay y Gigot. Stefanía Barroso — Tu Mejor Consultora en Mar del Plata.">
 
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -152,20 +152,20 @@
                     </div>
                 </section>
 
-                <!-- Catálogo: Millanel -->
+                <!-- Catálogo: Gigot -->
                 <section class="placa-maestra p-8 text-center space-y-6 flex flex-col justify-between"
-                    aria-labelledby="cat-millanel">
+                    aria-labelledby="cat-gigot">
                     <div class="space-y-2">
-                        <h3 id="cat-millanel" class="text-xl md:text-2xl font-bold italic uppercase">Millanel</h3>
+                        <h3 id="cat-gigot" class="text-xl md:text-2xl font-bold italic uppercase">Gigot</h3>
                         <p class="text-brandSubtext text-sm">Fragancias y cosmética de alta calidad.</p>
                     </div>
                     <div class="max-w-[280px] mx-auto w-full">
-                        <a href="#" id="trigger-millanel" data-pdf="../assets/docs/millanel.pdf"
+                        <a href="#" id="trigger-gigot" data-pdf="../assets/docs/gigot.pdf"
                             class="catalog-viewer-trigger block group relative" role="button"
-                            aria-label="Abrir Catálogo Millanel en PDF">
+                            aria-label="Abrir Catálogo Gigot en PDF">
                             <div class="absolute -inset-1 bg-gradient-to-tr from-secondary to-primary rounded-[2rem] blur opacity-25 group-hover:opacity-60 transition duration-500" aria-hidden="true"></div>
                             <div class="relative sub-placa overflow-hidden bg-white border border-gray-100 p-2">
-                                <img src="../assets/img/boton_catalogo.jpg" id="img-millanel" alt="Ver Catálogo Millanel"
+                                <img src="../assets/img/boton_catalogo.jpg" id="img-gigot" alt="Ver Catálogo Gigot"
                                     class="w-full h-auto rounded-[1.3rem] shadow-sm group-hover:scale-[1.02] transition-transform duration-500"
                                     loading="lazy" width="280" height="350"
                                     onerror="this.src='https://images.unsplash.com/photo-1512203530485-2550ad34b23a?auto=format&fit=crop&w=400&q=80';">
@@ -265,6 +265,14 @@
         </div>
     </div>
 
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/5492235869878" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 z-[90] group transition-all duration-500 hover:scale-110 active:scale-95"
+        aria-label="Contactar por WhatsApp">
+        <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-colors"></div>
+        <img src="../assets/img/whatsapp_2.png" alt="WhatsApp" class="relative w-16 h-16 md:w-20 md:h-20 drop-shadow-2xl">
+    </a>
+
     <script>
         // ─── Header scroll ──────────────────────────────────
         const header = document.getElementById('main-header');
@@ -350,7 +358,7 @@
                     'natura':   '../assets/docs/natura_c6.pdf',
                     'avon':     '../assets/docs/avon_6_26.pdf',
                     'marykay':  '../assets/docs/mary_kay.pdf',
-                    'millanel': '../assets/docs/millanel.pdf'
+                    'gigot':    '../assets/docs/gigot.pdf'
                 };
 
                 Object.keys(fallbacks).forEach(cat => {
@@ -367,7 +375,7 @@
                                 'natura':  'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80',
                                 'avon':    'https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=600&q=80',
                                 'marykay': 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80',
-                                'millanel':'https://images.unsplash.com/photo-1512203530485-2550ad34b23a?auto=format&fit=crop&w=600&q=80'
+                                'gigot':   'https://images.unsplash.com/photo-1512203530485-2550ad34b23a?auto=format&fit=crop&w=600&q=80'
                             };
                             if (img) img.src = mocks[cat];
                         }
@@ -406,7 +414,7 @@
                 'natura':   'trigger-natura',
                 'avon':     'trigger-avon',
                 'marykay':  'trigger-marykay',
-                'millanel': 'trigger-millanel'
+                'gigot':    'trigger-gigot'
             };
             Object.keys(mapping).forEach(cat => {
                 const data = catalogs[cat];

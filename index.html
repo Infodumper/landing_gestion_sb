@@ -78,8 +78,8 @@
             <!-- Links de Escritorio -->
             <ul class="hidden md:flex flex-[2] justify-center space-x-10 font-bold text-xs tracking-widest text-brandSubtext">
                 <li><a href="#inicio"    class="hover:text-primary transition-colors">INICIO</a></li>
-                <li><a href="#productos" class="hover:text-primary transition-colors">CATÁLOGO</a></li>
-                <li><a href="#quien-soy" class="hover:text-primary transition-colors">NOSOTROS</a></li>
+                <li><a href="#productos" class="hover:text-primary transition-colors">PROMOS</a></li>
+                <li><a href="#quien-soy" class="hover:text-primary transition-colors">SOBRE MÍ</a></li>
                 <li><a href="#contacto"  class="hover:text-primary transition-colors">CONTACTO</a></li>
             </ul>
 
@@ -108,88 +108,95 @@
     <section id="inicio" class="relative w-full h-screen overflow-hidden bg-black">
         <div id="carousel-track" class="h-full w-full flex" style="transform: translateX(-100%);">
 
-            <!-- Clon de Slide 4 (Video — al inicio para loop infinito) -->
+            <!-- Clon de Slide 4 (Joyas — al inicio para loop infinito) -->
             <div class="carousel-item min-w-full h-full relative" aria-hidden="true">
-                <video src="assets/video/video_prueba.mp4" autoplay loop muted playsinline
-                    class="w-full h-full object-cover"></video>
+                <img id="carousel-img-clone-4" src="assets/img/carousel_4.png" alt="" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">Joyas y Semijoyas</h2>
+                </div>
             </div>
 
-            <!-- Slide 1: Peluquería -->
+            <!-- Slide 1: Productos de Belleza -->
             <div class="carousel-item min-w-full h-full relative">
-                <img src="assets/img/carousel_1.png" alt="Peluquería profesional"
+                <img id="carousel-img-1" src="assets/img/carousel_1.png" alt="Productos de Belleza"
                     class="w-full h-full object-cover opacity-60" loading="eager" fetchpriority="high">
                 <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
-                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
-                        Estilo que <span class="text-secondary italic font-serif">inspira</span>
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg uppercase italic">
+                        Los mejores productos <br> de <span class="text-secondary">belleza</span>
                     </h2>
                     <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
-                        Elevá tu imagen con las últimas tendencias en peluquería profesional.
+                        Una selección de marcas reconocidas, pensado para ayudarte a verte y sentirte mejor todos los días.
                     </p>
-                    <a href="#productos"
-                        class="mt-auto bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">
-                        Ver servicios
+                    <a href="productos-belleza/index.html"
+                        class="mt-auto bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl">
+                        Ver productos
                     </a>
                 </div>
             </div>
 
             <!-- Slide 2: Maquillaje -->
             <div class="carousel-item min-w-full h-full relative">
-                <img src="assets/img/carousel_2.png" alt="Maquillaje profesional"
+                <img id="carousel-img-2" src="assets/img/carousel_2.png" alt="Maquillaje"
                     class="w-full h-full object-cover opacity-60" loading="lazy">
                 <div class="absolute inset-0 flex flex-col justify-start items-end text-right pt-[18vh] pb-32 pr-6 md:pr-24">
-                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
-                        Brillá <span class="text-secondary italic font-serif">con todo.</span>
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg uppercase italic">
+                        Maquillaje Social, <br> <span class="text-secondary">artístico</span> y baby shower
                     </h2>
                     <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
-                        Maquillaje profesional para eventos y ocasiones inolvidables.
+                        Realizado con dedicación para que luzcas como imaginás y disfrutes cada momento.
                     </p>
-                    <a href="https://wa.me/5492235869878"
-                        class="mt-auto bg-secondary hover:bg-white hover:text-secondary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">
-                        Reservar ahora
+                    <a href="#" onclick="Swal.fire('Próximamente', 'Esta sección está en construcción.', 'info')"
+                        class="mt-auto bg-secondary hover:bg-white hover:text-secondary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl">
+                        Ver servicios
                     </a>
                 </div>
             </div>
 
-            <!-- Slide 3: Emprendimiento -->
-            <div class="carousel-item min-w-full h-full relative overflow-hidden">
-                <div class="w-full h-full bg-gradient-to-tr from-brandText via-[#052d23] to-primary">
-                    <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
-                        <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
-                            Construí tu <span class="text-secondary italic font-serif">futuro</span>
-                        </h2>
-                        <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
-                            Sumate a nuestro equipo de profesionales y crecé con nosotros.
-                        </p>
-                        <a href="#quien-soy"
-                            class="mt-auto border flex w-max border-white/80 hover:bg-white hover:text-brandText text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-lg hover:shadow-xl">
-                            Sumarme
+            <!-- Slide 3: Peluquería -->
+            <div class="carousel-item min-w-full h-full relative">
+                <img id="carousel-img-3" src="assets/img/carousel_3.png" alt="Peluquería"
+                    class="w-full h-full object-cover opacity-60" loading="lazy">
+                <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg uppercase italic">
+                        Peluquería <br> y <span class="text-secondary">Estética</span>
+                    </h2>
+                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
+                        Belleza, cuidado y bienestar en servicios realizados con dedicación y atención personalizada.
+                    </p>
+                    <a href="#" onclick="Swal.fire('Próximamente', 'Esta sección está en construcción.', 'info')"
+                        class="mt-auto border border-white hover:bg-white hover:text-brandText text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl">
+                        Ver servicios
+                    </a>
+                </div>
+            </div>
+
+            <!-- Slide 4: Joyas -->
+            <div class="carousel-item min-w-full h-full relative">
+                <img id="carousel-img-4" src="assets/img/carousel_4.png" alt="Joyas y Semijoyas"
+                    class="w-full h-full object-cover opacity-60" loading="lazy">
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center pt-[18vh] pb-32 px-6">
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg uppercase italic">
+                        Joyas y <span class="text-secondary">Semijoyas</span>
+                    </h2>
+                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-2xl mb-8 drop-shadow-md">
+                        Una combinación de belleza, calidad y garantía de por vida, con una oportunidad real para generar ingresos.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="joyas/index.html"
+                            class="bg-primary hover:bg-white hover:text-primary text-white px-10 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl">
+                            Ver catálogo
+                        </a>
+                        <a href="joyas/index.html#sumate"
+                            class="bg-secondary hover:bg-white hover:text-secondary text-white px-10 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl">
+                            Generar ingresos
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: Video -->
-            <div class="carousel-item min-w-full h-full relative">
-                <video src="assets/video/video_prueba.mp4" autoplay loop muted playsinline
-                    class="w-full h-full object-cover"></video>
-            </div>
-
-            <!-- Clon de Slide 1 (para cierre del loop infinito) -->
+            <!-- Clon de Slide 1 (Joyas — para cierre de loop) -->
             <div class="carousel-item min-w-full h-full relative" aria-hidden="true">
-                <img src="assets/img/carousel_1.png" alt=""
-                    class="w-full h-full object-cover opacity-60" loading="lazy">
-                <div class="absolute inset-0 flex flex-col justify-start items-start text-left pt-[18vh] pb-32 pl-6 md:pl-24">
-                    <h2 class="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-lg">
-                        Estilo que <span class="text-secondary italic font-serif">inspira</span>
-                    </h2>
-                    <p class="text-lg md:text-xl font-light text-gray-100 max-w-lg mb-8 drop-shadow-md">
-                        Elevá tu imagen con las últimas tendencias en peluquería profesional.
-                    </p>
-                    <a href="#productos"
-                        class="mt-auto bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all transform hover:-translate-y-1 text-sm shadow-xl hover:shadow-2xl">
-                        Ver servicios
-                    </a>
-                </div>
+                <img id="carousel-img-clone-1" src="assets/img/carousel_1.png" alt="" class="w-full h-full object-cover opacity-60">
             </div>
         </div>
 
@@ -234,53 +241,57 @@
                 <div class="flex items-center gap-10 md:gap-16" id="ribbon-set">
 
                     <!-- Promociones -->
-                    <button class="flex flex-col items-center group cursor-pointer min-w-[100px]"
+                    <a href="#productos" class="flex flex-col items-center group cursor-pointer min-w-[100px]"
                         aria-label="Ver Promociones">
-                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-[4px_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-[6px_6px_20px_rgba(0,0,0,0.12)] group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
-                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
                             </svg>
                         </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText">Promo</span>
-                    </button>
+                        <span class="text-sm font-bold tracking-tight text-brandText">Promos</span>
+                    </a>
 
                     <!-- Productos de Belleza -->
-                    <a href="productos-belleza/" id="cat-link-belleza" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                    <a href="productos-belleza/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-[4px_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-[6px_6px_20px_rgba(0,0,0,0.12)] group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
-                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                             </svg>
                         </div>
                         <span class="text-sm font-bold tracking-tight text-brandText text-center">Productos<br>de Belleza</span>
                     </a>
 
                     <!-- Joyas y Semijoyas -->
-                    <a href="joyas/" id="cat-link-joyas" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
-                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                    <a href="joyas/" class="flex flex-col items-center group cursor-pointer min-w-[100px]">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-[4px_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-[6px_6px_20px_rgba(0,0,0,0.12)] group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z">
-                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"></path>
                             </svg>
                         </div>
                         <span class="text-sm font-bold tracking-tight text-brandText text-center">Joyas y<br>Semijoyas</span>
                     </a>
 
-                    <!-- Belleza -->
-                    <button class="flex flex-col items-center group cursor-pointer min-w-[100px]"
-                        aria-label="Ver servicios de Belleza">
-                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-md group-hover:-translate-y-1 transition-all mb-4">
+                    <!-- Maquillaje -->
+                    <button onclick="Swal.fire('Próximamente', 'Esta sección está en construcción.', 'info')" class="flex flex-col items-center group cursor-pointer min-w-[100px]"
+                        aria-label="Ver servicios de Maquillaje">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-[4px_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-[6px_6px_20px_rgba(0,0,0,0.12)] group-hover:-translate-y-1 transition-all mb-4">
                             <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z">
-                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.003 9.003 0 008.341-5.647 9.003 9.003 0 00-8.341-5.647 9.003 9.003 0 00-8.341 5.647A9.003 9.003 0 0012 21z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 11a2 2 0 100-4 2 2 0 000 4z" />
                             </svg>
                         </div>
-                        <span class="text-sm font-bold tracking-tight text-brandText uppercase text-center">Belleza</span>
+                        <span class="text-sm font-bold tracking-tight text-brandText text-center uppercase">Maquillaje</span>
+                    </button>
+
+                    <!-- Peluquería -->
+                    <button onclick="Swal.fire('Próximamente', 'Esta sección está en construcción.', 'info')" class="flex flex-col items-center group cursor-pointer min-w-[100px]"
+                        aria-label="Ver servicios de Peluquería">
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-[4px_4px_12px_rgba(0,0,0,0.08)] flex items-center justify-center text-primary border border-gray-50 group-hover:shadow-[6px_6px_20px_rgba(0,0,0,0.12)] group-hover:-translate-y-1 transition-all mb-4">
+                            <svg class="w-7 h-7 md:w-8 md:h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121L19 19c.771.771 2.022.771 2.793 0s.771-2.022 0-2.793l-4.879-4.879m-2.828 2.828l-.707-.707m2.828 2.828a3 3 0 11-4.243-4.243 3 3 0 014.243 4.243zM3 3l1.5 1.5m0 0l2.5 2.5m-2.5-2.5l2.5-2.5m-2.5 2.5l-2.5 2.5" />
+                            </svg>
+                        </div>
+                        <span class="text-sm font-bold tracking-tight text-brandText text-center uppercase">Peluquería<br>y Estética</span>
                     </button>
                 </div>
             </div>
@@ -290,7 +301,7 @@
     <!-- ══════════════════════════════════════════
          PRODUCTOS DESTACADOS
     ══════════════════════════════════════════ -->
-    <section id="productos" class="py-12 bg-gray-50/30" aria-labelledby="prod-heading">
+    <section id="productos" class="py-12 bg-gray-50/30 scroll-mt-24" aria-labelledby="prod-heading">
         <div class="w-full max-w-7xl mx-auto px-4">
             <h2 id="prod-heading" class="text-xl md:text-2xl font-bold text-brandText mb-8 text-center uppercase tracking-wide">
                 Productos Destacados
@@ -365,14 +376,16 @@
             </div>
             <!-- Texto -->
             <div class="w-1/2 flex flex-col items-start justify-center text-left py-2">
-                <h2 id="about-heading" class="text-lg md:text-2xl font-bold text-black mb-3">
-                    Tu mejor consultora de belleza
+                <h2 id="about-heading" class="text-xl md:text-3xl font-black text-brandText mb-4 uppercase italic leading-tight">
+                    Ayudarte a brillar es <br> <span class="text-secondary">mi propósito</span>
                 </h2>
-                <p class="text-sm md:text-xl text-gray-800 leading-relaxed font-normal mb-6">
-                    Nuestra razón de ser es crear y comercializar productos que promuevan el bienestar y realcen tu esencia natural.
-                </p>
-                <a href="#contacto"
-                    class="px-6 py-2 md:px-8 md:py-3 rounded-full border border-[#f48c42] text-black font-bold text-xs md:text-sm hover:bg-[#f48c42] hover:text-white transition-all shadow-sm">
+                <div class="text-sm md:text-lg text-gray-700 space-y-4 mb-8 leading-relaxed">
+                    <p>En <strong>Tu Mejor Consultora</strong>, mi propósito es ayudarte a verte y sentirte en tu mejor versión.</p>
+                    <p>Soy <strong>Stefy</strong>, consultora de belleza y emprendedora, y ofrezco productos, maquillaje, peluquería estética, joyas y asesoramiento personalizado para que encuentres eso que te haga brillar.</p>
+                    <p>Además, acompaño a mujeres que quieren empezar su propio camino de crecimiento dentro de mi equipo de <strong>Perla Negra</strong>, compartiendo experiencia, guía y oportunidades reales.</p>
+                </div>
+                <a href="joyas/index.html#sumate"
+                    class="px-8 py-3 rounded-full bg-primary text-white font-bold text-sm hover:bg-brandText transition-all shadow-md">
                     Conocer más
                 </a>
             </div>
@@ -380,35 +393,133 @@
     </section>
 
     <!-- ══════════════════════════════════════════
-         CONTACTO
+         EXPERIENCIAS — Testimonios
     ══════════════════════════════════════════ -->
-    <section id="contacto" class="pt-24 pb-8 bg-white text-brandText" aria-labelledby="contact-heading">
-        <div class="max-w-3xl mx-auto text-center space-y-10">
-            <div class="space-y-10">
-                <h2 id="contact-heading" class="text-4xl md:text-5xl font-black text-brandText uppercase italic">
-                    Contactanos
-                </h2>
-                <p class="text-xl text-brandSubtext">
-                    Estamos para asesorarte. Respondemos tus consultas de forma personalizada y rápida.
-                </p>
+    <section class="py-16 bg-gray-50/50 overflow-hidden" aria-labelledby="exp-heading">
+        <div class="max-w-7xl mx-auto px-4 mb-10 text-center">
+            <h2 id="exp-heading" class="text-3xl md:text-4xl font-black text-brandText uppercase italic">
+                Experiencias
+            </h2>
+        </div>
 
-                <div class="flex flex-col items-center space-y-5">
-                    <div class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-primary shadow-sm hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                            </path>
-                        </svg>
+        <div class="w-full overflow-x-auto pb-8 no-scrollbar snap-x snap-mandatory px-4">
+            <div class="flex gap-6 min-w-max md:justify-center px-4">
+                
+                <!-- Carla -->
+                <div class="w-[280px] md:w-[350px] bg-white p-6 rounded-[1.5rem] shadow-[4px_4px_15px_rgba(0,0,0,0.05)] border border-gray-100 snap-center flex flex-col items-start gap-4">
+                    <div class="flex items-center gap-1 text-secondary">
+                        <!-- Icono de 5 Estrellas -->
+                        <div class="flex">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-brandText uppercase tracking-widest text-sm mb-1">Email</h3>
-                        <a href="mailto:contacto@tumejorconsultora.com.ar"
-                            class="text-brandSubtext hover:text-primary transition-colors">
-                            contacto@tumejorconsultora.com.ar
-                        </a>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed font-medium italic">
+                        "Quedé feliz con el maquillaje. Entendió perfecto lo que quería, me sentí cómoda todo el tiempo y el resultado fue hermoso. Muy profesional y dedicada en cada detalle."
+                    </p>
+                    <div class="mt-auto">
+                        <span class="font-bold text-brandText uppercase tracking-widest text-xs">Carla</span>
                     </div>
                 </div>
+
+                <!-- Mónica -->
+                <div class="w-[280px] md:w-[350px] bg-white p-6 rounded-[1.5rem] shadow-[4px_4px_15px_rgba(0,0,0,0.05)] border border-gray-100 snap-center flex flex-col items-start gap-4">
+                    <div class="flex items-center gap-1 text-secondary">
+                        <div class="flex">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed font-medium italic">
+                        "Excelente atención y joyas hermosas. Todo llegó en perfectas condiciones y la calidad superó mis expectativas. Sin duda volvería a comprar."
+                    </p>
+                    <div class="mt-auto">
+                        <span class="font-bold text-brandText uppercase tracking-widest text-xs">Mónica</span>
+                    </div>
+                </div>
+
+                <!-- Agustina -->
+                <div class="w-[280px] md:w-[350px] bg-white p-6 rounded-[1.5rem] shadow-[4px_4px_15px_rgba(0,0,0,0.05)] border border-gray-100 snap-center flex flex-col items-start gap-4">
+                    <div class="flex items-center gap-1 text-secondary">
+                        <div class="flex">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed font-medium italic">
+                        "Me encantó la atención de Stefy. Me asesoró súper bien y me ayudó a elegir justo lo que necesitaba. Se nota el compromiso y el amor con el que trabaja."
+                    </p>
+                    <div class="mt-auto">
+                        <span class="font-bold text-brandText uppercase tracking-widest text-xs">Agustina</span>
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-20 bg-white scroll-mt-24" aria-labelledby="contact-heading">
+        <div class="max-w-xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 id="contact-heading" class="text-3xl md:text-5xl font-black text-brandText uppercase italic mb-6">
+                    Contactanos
+                </h2>
+                <div class="space-y-2">
+                    <p class="text-lg text-brandSubtext font-bold leading-relaxed px-4">
+                        ¿Querés hacer una consulta, pedir información o reservar un servicio?
+                    </p>
+                    <p class="text-md text-brandSubtext font-medium italic">
+                        Completá el formulario y te responderé a la brevedad.
+                    </p>
+                </div>
+            </div>
+
+            <form id="contact-form" class="space-y-6" onsubmit="event.preventDefault(); sendWhatsAppContact();">
+                <!-- Nombre -->
+                <div class="space-y-2 text-left">
+                    <label for="contact-name" class="text-xs font-black uppercase tracking-widest text-brandText ml-2">Nombre</label>
+                    <input type="text" id="contact-name" required placeholder="Tu nombre completo"
+                        class="w-full bg-gray-50 border border-gray-100 px-6 py-4 rounded-full text-brandText focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium">
+                </div>
+
+                <!-- Teléfono/WhatsApp -->
+                <div class="space-y-2 text-left">
+                    <label for="contact-phone" class="text-xs font-black uppercase tracking-widest text-brandText ml-2">WhatsApp o teléfono</label>
+                    <input type="tel" id="contact-phone" required placeholder="Ej: +54 9 223 1234567"
+                        class="w-full bg-gray-50 border border-gray-100 px-6 py-4 rounded-full text-brandText focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium">
+                </div>
+
+                <!-- Email -->
+                <div class="space-y-2 text-left">
+                    <label for="contact-email" class="text-xs font-black uppercase tracking-widest text-brandText ml-2">Email (opcional)</label>
+                    <input type="email" id="contact-email" placeholder="tu@email.com"
+                        class="w-full bg-gray-50 border border-gray-100 px-6 py-4 rounded-full text-brandText focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium">
+                </div>
+
+                <!-- Mensaje -->
+                <div class="space-y-2 text-left">
+                    <label for="contact-msg" class="text-xs font-black uppercase tracking-widest text-brandText ml-2">Mensaje</label>
+                    <textarea id="contact-msg" required rows="4" placeholder="¿En qué puedo ayudarte?"
+                        class="w-full bg-gray-50 border border-gray-100 px-6 py-4 rounded-[1.5rem] text-brandText focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium resize-none"></textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit"
+                        class="w-full bg-primary hover:bg-brandText text-white py-5 rounded-full font-black uppercase tracking-widest text-sm transition-all shadow-xl hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.237 3.483 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.308 1.652zm6.304-3.717c1.458.863 3.033 1.317 4.646 1.318 5.438 0 9.863-4.425 9.865-9.864.001-2.636-1.026-5.115-2.893-6.983-1.867-1.868-4.347-2.893-6.983-2.894-5.438 0-9.864 4.426-9.867 9.865-.001 1.737.456 3.428 1.321 4.908l-.883 3.226 3.304-.866zm8.903-12.213c-.244-.216-.622-.249-.974-.047-.354.202-1.125 1.096-1.125 1.096-.282.355-.382.722-.234 1.104 0 0 .151.341.342.66.191.318.428.66.711.979s.614.614.979.842c.365.228.746.364 1.192.427.445.064.832-.014 1.164-.236.332-.224 1.003-.896 1.003-.896s.318-.282.282-.663l-.014-.141s-.057-.31-.368-.431l-1.989-.922c-.31-.141-.65-.106-.974.127l-.637.524c-.226.198-.445.249-.785.045-.31-.19-.893-.615-1.543-1.19s-1.144-1.282-1.355-1.543c-.211-.261-.225-.566-.021-.891l.425-.566z" /></svg>
+                        Enviar Consulta
+                    </button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -428,6 +539,24 @@
             </p>
         </div>
     </footer>
+    
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/5492235869878" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-24 right-6 z-[90] group transition-all duration-500 hover:scale-110 active:scale-95"
+        aria-label="Contactar por WhatsApp">
+        <div class="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-colors"></div>
+        <img src="assets/img/whatsapp_2.png" alt="WhatsApp" class="relative w-16 h-16 md:w-20 md:h-20 drop-shadow-2xl">
+    </a>
+
+    <!-- Botón Flotante Carrito -->
+    <button id="cart-btn" 
+        class="fixed bottom-6 right-6 z-[90] bg-primary text-white p-4 rounded-full shadow-2xl hover:bg-brandText transition-all transform hover:scale-105 active:scale-95 hidden items-center justify-center gap-2 group">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span id="cart-count" class="bg-secondary text-white text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full -mt-2">0</span>
+        <span class="hidden group-hover:block ml-2 text-xs font-bold uppercase tracking-widest">Ver Pedido</span>
+    </button>
 
 
     <!-- ══════════════════════════════════════════
@@ -442,11 +571,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <div class="flex flex-col space-y-6 text-lg font-bold text-brandText uppercase tracking-widest">
-                <a href="#inicio"    class="mobile-link hover:text-primary">Inicio</a>
-                <a href="#productos" class="mobile-link hover:text-primary">Catálogo</a>
-                <a href="#quien-soy" class="mobile-link hover:text-primary">Nosotros</a>
-                <a href="#contacto"  class="mobile-link hover:text-primary">Contacto</a>
+            <div class="flex flex-col space-y-4 text-sm font-bold text-brandText uppercase tracking-[0.2em]">
+                <a href="#inicio"    class="mobile-link py-2 border-b border-gray-50 hover:text-primary">Inicio</a>
+                <a href="#productos" class="mobile-link py-2 border-b border-gray-50 hover:text-primary">Promos</a>
+                <a href="productos-belleza/index.html" class="mobile-link py-2 border-b border-gray-50 hover:text-primary">Productos de Belleza</a>
+                <a href="joyas/index.html" class="mobile-link py-2 border-b border-gray-50 hover:text-primary">Joyas y Semijoyas</a>
+                <button onclick="proximamente()" class="mobile-link text-left py-2 border-b border-gray-50 hover:text-primary uppercase font-bold tracking-[0.2em]">Maquillaje</button>
+                <button onclick="proximamente()" class="mobile-link text-left py-2 border-b border-gray-50 hover:text-primary uppercase font-bold tracking-[0.2em]">Peluquería y Estética</button>
+                <a href="#quien-soy" class="mobile-link py-2 border-b border-gray-50 hover:text-primary">Sobre mí</a>
+                <a href="#contacto"  class="mobile-link py-2 border-b border-gray-50 hover:text-primary">Contacto</a>
             </div>
         </div>
     </nav>
@@ -529,6 +662,33 @@
 
         // ─── Menú Móvil ───────────────────────────────────────────
         (function initMobileMenu() {
+            // ─── Sincronización con Drive ────────────────────────
+            async function initDynamicAssets() {
+                try {
+                    const response = await fetch('/api/get-catalogs');
+                    const res = await response.json();
+                    if (res.status === 'success' && res.data) {
+                        const { carousel } = res.data;
+                        if (carousel && carousel.length > 0) {
+                            carousel.forEach(img => {
+                                const num = img.name.match(/\d+/);
+                                if (num) {
+                                    const el = document.getElementById(`carousel-img-${num[0]}`);
+                                    if (el) el.src = img.url;
+                                    
+                                    // Actualizar clones para loop infinito
+                                    if (num[0] === '1') document.getElementById('carousel-img-clone-1').src = img.url;
+                                    if (num[0] === '4') document.getElementById('carousel-img-clone-4').src = img.url;
+                                }
+                            });
+                        }
+                    }
+                } catch (err) {
+                    console.warn('[DRIVE] Error cargando assets dinámicos:', err);
+                }
+            }
+            initDynamicAssets();
+
             const menuBtn   = document.getElementById('menu-btn');
             const closeBtn  = document.getElementById('close-menu');
             const menu      = document.getElementById('mobile-menu');
@@ -674,15 +834,43 @@
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 SB_Cart.init();
-                initDynamicCatalogs();
             });
         } else {
             SB_Cart.init();
-            initDynamicCatalogs();
         }
 
-        // El enlace de categorías en la Home ahora se maneja puramente por navegación
-        // a las páginas internas de /productos-belleza/ y /joyas/
+        // ─── Función de Contacto WhatsApp ────────────────────────
+        function sendWhatsAppContact() {
+            const name  = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const email = document.getElementById('contact-email').value;
+            const msg   = document.getElementById('contact-msg').value;
+
+            if (!name || !phone || !msg) {
+                Swal.fire('Error', 'Por favor completa los campos requeridos.', 'error');
+                return;
+            }
+
+            const text = `*Consulta desde la Web*%0A%0A*Nombre:* ${name}%0A*WhatsApp/tel:* ${phone}%0A*Email:* ${email || 'No indicado'}%0A*Mensaje:* ${msg}`;
+            const waLink = `https://wa.me/5492235869878?text=${text}`;
+            
+            window.open(waLink, '_blank');
+        }
+
+        // ─── Función Próximamente ───────────────────────────────
+        function proximamente() {
+            Swal.fire({
+                title: '¡Próximamente!',
+                text:  'Estamos trabajando para brindarte el mejor servicio en esta sección. ¡Volvé a visitarnos pronto!',
+                icon:  'info',
+                confirmButtonText: 'Entendido',
+                confirmButtonColor: '#f48c42',
+                customClass: {
+                    popup: 'rounded-[2rem]',
+                    confirmButton: 'rounded-full px-8 py-3 font-bold uppercase tracking-widest text-xs'
+                }
+            });
+        }
     </script>
 </body>
 
