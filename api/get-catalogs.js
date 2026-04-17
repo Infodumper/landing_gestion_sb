@@ -34,46 +34,54 @@ module.exports = async (req, res) => {
 
     let files = response.data.files || [];
 
-    // 2. Buscar si existe una subcarpeta "Imágenes" o "Imagenes" para traer assets adicionales
+    // 2. Buscar si existe una subcarpeta para assets adicionales (búsqueda más flexible)
+    // Buscamos cualquier carpeta que contenga 'Imagen' (para capturar Imágenes, Imagenes, IMAGENES, etc)
     const subfolderQuery = await drive.files.list({
-      q: `'${FOLDER_ID}' in parents and name contains 'Imagen' and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
-      fields: 'files(id)',
+      q: `'${FOLDER_ID}' in parents and (name contains 'Imagen' or name contains 'Asset') and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
+      fields: 'files(id, name)',
     });
 
     if (subfolderQuery.data.files && subfolderQuery.data.files.length > 0) {
-      const subfolderId = subfolderQuery.data.files[0].id;
-      const subResponse = await drive.files.list({
-        q: `'${subfolderId}' in parents and trashed = false`,
-        fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
-        orderBy: 'modifiedTime desc',
-      });
-      if (subResponse.data.files) {
-        files = [...files, ...subResponse.data.files];
+      // Escaneamos todas las subcarpetas de imágenes encontradas
+      for (const folder of subfolderQuery.data.files) {
+          const subResponse = await drive.files.list({
+            q: `'${folder.id}' in parents and trashed = false`,
+            fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
+            orderBy: 'modifiedTime desc',
+          });
+          if (subResponse.data.files) {
+            files = [...files, ...subResponse.data.files];
+          }
       }
     }
 
     const latestByLine = {};
-
-    /**
-     * Lógica de Agrupación Flexible:
-     * Buscamos palabras clave dentro del nombre del archivo para clasificarlo.
-     */
     const carouselImages = [];
 
     files.forEach(file => {
-      // Normalizamos el nombre: minúsculas y quitar acentos (ej: Avón -> avon)
+      // Normalizamos el nombre: minúsculas y quitar acentos (ej: página -> pagina)
       const fileName = file.name.toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
       
       let category = 'otros';
 
-      // Categorización granular para marcas de belleza y joyas
+      // Categorización granular
+      if (fileName.includes('carousel') && file.mimeType.startsWith('image/')) {
+          carouselImages.push({
+              name: fileName,
+              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`, 
+              order: parseInt(fileName.match(/\d+/) || [99])[0]
+          });
+          return;
+      }
+      
       if (fileName.includes('natura'))                 category = 'natura';
       else if (fileName.includes('avon'))              category = 'avon';
       else if (fileName.includes('mary') || fileName.includes('kay')) category = 'marykay';
       else if (fileName.includes('gigot'))             category = 'gigot';
-      else if (fileName.includes('joya') || fileName.includes('perla') || fileName.includes('negra') || fileName.includes('semi')) category = 'joyas';
+      else if (fileName.includes('joya') || fileName.includes('perla') || fileName.includes('negra')) category = 'joyas';
+      else if (fileName.includes('construccion'))      category = 'construccion';
       else if (fileName.includes('belleza') || fileName.includes('perfu')) category = 'belleza';
 
       const isPdf = file.mimeType === 'application/pdf';
