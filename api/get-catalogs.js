@@ -44,13 +44,14 @@ module.exports = async (req, res) => {
     if (allFoldersQuery.data.files && allFoldersQuery.data.files.length > 0) {
       // Escaneamos todas las subcarpetas encontradas
       for (const folder of allFoldersQuery.data.files) {
+          console.log(`[DRIVE] Escaneando subcarpeta: ${folder.name} (${folder.id})`);
           const subResponse = await drive.files.list({
             q: `'${folder.id}' in parents and trashed = false`,
             fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
             orderBy: 'modifiedTime desc',
           });
           if (subResponse.data.files) {
-            const enrichedFiles = subResponse.data.files.map(f => ({ ...f, folderName: folder.name.toLowerCase() }));
+            const enrichedFiles = subResponse.data.files.map(f => ({ ...f, folderName: folder.name.toLowerCase().trim() }));
             files = [...files, ...enrichedFiles];
           }
       }
@@ -154,8 +155,10 @@ module.exports = async (req, res) => {
     maquillajeImages.sort((a, b) => a.order - b.order);
     peluqueriaImages.sort((a, b) => a.order - b.order);
 
-    // Cachear respuesta por 1 hora en el borde de Vercel
-    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
+    console.log(`[DRIVE] Respuesta lista: ${maquillajeImages.length} fotos maq, ${peluqueriaImages.length} fotos pel.`);
+
+    // Cache deshabilitado temporalmente para pruebas
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.status(200).json({
       status: 'success',
       data: {
