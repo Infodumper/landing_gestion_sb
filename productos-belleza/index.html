@@ -385,10 +385,10 @@
                 const response = await fetch('/api/get-catalogs');
                 const result = await response.json();
                 
-                if (result.status === 'success' && result.data) {
-                    applyCatalogs(result.data);
+                if (result.status === 'success' && result.data && result.data.catalogs) {
+                    applyCatalogs(result.data.catalogs);
                 } else {
-                    throw new Error('API return non-success status');
+                    throw new Error('API returning non-success or empty data');
                 }
             } catch (err) {
                 console.warn('[DRIVE] Usando fallback local para previsualización.', err);

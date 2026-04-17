@@ -919,10 +919,11 @@
         async function initDynamicCarousel() {
             try {
                 const response = await fetch('/api/get-catalogs');
-                const data = await response.json();
+                const result = await response.json();
                 
-                if (data.carousel && data.carousel.length > 0) {
-                    data.carousel.forEach((img, index) => {
+                // IMPORTANTE: Acceder a result.data.carousel
+                if (result.status === 'success' && result.data && result.data.carousel) {
+                    result.data.carousel.forEach((img, index) => {
                         const num = index + 1;
                         // Seleccionamos tanto el original como los clones que lleven ese número (ej: carousel-img-1 y carousel-img-clone-1)
                         const elements = document.querySelectorAll(`img[id*="carousel-img-${num}"], img[id*="carousel-img-clone-${num}"]`);
