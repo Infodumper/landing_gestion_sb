@@ -308,8 +308,10 @@
                 const response = await fetch('/api/get-catalogs');
                 const result = await response.json();
                 
-                if (result.status === 'success' && result.data) {
-                    applyCatalogs(result.data);
+                if (result.status === 'success' && result.data && result.data.catalogs) {
+                    applyCatalogs(result.data.catalogs);
+                } else {
+                    throw new Error('API returning non-success or empty data');
                 }
             } catch (err) {
                 console.warn('[DRIVE] Usando fallback local para previsualización.', err);
@@ -319,20 +321,22 @@
         }
 
         function applyCatalogs(catalogs) {
+            // Buscamos bajo la categoría 'joyas' que configuramos en la API
             const data = catalogs['joyas'];
             if (data) {
                 const t = document.getElementById('trigger-joyas');
                 const i = document.getElementById('img-joyas');
                 if (t) t.setAttribute('data-pdf', data.viewLink);
                 
-                // Si hay thumbnail de Drive, usarlo. Si no, intentar generar uno local.
+                // Si hay thumbnail de Drive, usarlo.
                 if (i && data.thumbnail) {
-                    i.src = data.thumbnail.replace(/=s\d+/, '=s600');
+                    i.src = data.thumbnail;
                 } else {
+                    // Fallback local si no hay imagen en drive para esta categoría
                     generatePdfThumbnail('../assets/docs/perla_negra.pdf', 'img-joyas');
                 }
             } else {
-                // Fallback si no hay en drive
+                // Fallback total si la categoría no viene de la API
                 generatePdfThumbnail('../assets/docs/perla_negra.pdf', 'img-joyas');
             }
         }
