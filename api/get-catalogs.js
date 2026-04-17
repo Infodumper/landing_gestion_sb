@@ -81,7 +81,7 @@ module.exports = async (req, res) => {
       if (fileName.includes('natura'))                 category = 'natura';
       else if (fileName.includes('avon'))              category = 'avon';
       else if (fileName.includes('mary') || fileName.includes('kay')) category = 'marykay';
-      else if (fileName.includes('gigot'))             category = 'gigot';
+      else if (fileName.includes('bagues'))            category = 'bagues';
       else if (fileName.includes('joya') || fileName.includes('perla') || fileName.includes('negra')) category = 'joyas';
       else if (fileName.includes('construccion'))      category = 'construccion';
       else if (fileName.includes('belleza') || fileName.includes('perfu')) category = 'belleza';
