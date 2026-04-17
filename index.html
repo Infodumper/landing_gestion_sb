@@ -914,6 +914,33 @@
                 }
             });
         }
+
+        // ─── Inicialización Dinámica de Carrusel ──────────────────
+        async function initDynamicCarousel() {
+            try {
+                const response = await fetch('/api/get-catalogs');
+                const data = await response.json();
+                
+                if (data.carousel && data.carousel.length > 0) {
+                    data.carousel.forEach((img, index) => {
+                        const num = index + 1;
+                        // Seleccionamos tanto el original como los clones que lleven ese número (ej: carousel-img-1 y carousel-img-clone-1)
+                        const elements = document.querySelectorAll(`img[id*="carousel-img-${num}"], img[id*="carousel-img-clone-${num}"]`);
+                        elements.forEach(el => {
+                            el.src = img.url;
+                        });
+                    });
+                    console.log('✅ Carrusel actualizado con éxito desde Drive (incluyendo clones)');
+                }
+            } catch (error) {
+                console.warn('⚠️ No se pudo cargar el carrusel dinámico:', error);
+            }
+        }
+
+        // Ejecutar carga dinámica al inicio
+        document.addEventListener('DOMContentLoaded', () => {
+            initDynamicCarousel();
+        });
     </script>
 </body>
 

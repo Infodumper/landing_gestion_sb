@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
       if (fileName.includes('carousel') && isImg) {
           carouselImages.push({
               name: fileName,
-              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`, // URL Directa y de alta calidad
+              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`, // Formato estable y de alta calidad
               order: parseInt(fileName.match(/\d+/) || [99])[0]
           });
           return;
@@ -109,9 +109,10 @@ module.exports = async (req, res) => {
       // Si no hay imagen, usamos el thumbnailLink generado por Drive para el PDF
       if (isImg) {
         // Enlaces de Drive para imágenes directas
-        latestByLine[category].thumbnail = file.thumbnailLink;
+        latestByLine[category].thumbnail = `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`;
       } else if (isPdf && !latestByLine[category].thumbnail) {
-        latestByLine[category].thumbnail = file.thumbnailLink;
+        // Para PDFs usamos la miniatura de Drive pero forzamos tamaño grande
+        latestByLine[category].thumbnail = file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+/, '=s1000') : null;
       }
     });
 
