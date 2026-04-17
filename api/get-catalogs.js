@@ -68,10 +68,12 @@ module.exports = async (req, res) => {
 
       // Categorización granular
       if (fileName.includes('carousel') && file.mimeType.startsWith('image/')) {
+          const match = fileName.match(/\d+/);
+          const order = match ? parseInt(match[0]) : 99;
           carouselImages.push({
               name: fileName,
-              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`, 
-              order: parseInt(fileName.match(/\d+/) || [99])[0]
+              url: file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+/, '=s1600') : `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`,
+              order: order
           });
           return;
       }
