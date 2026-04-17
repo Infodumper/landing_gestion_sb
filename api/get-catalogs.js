@@ -34,16 +34,16 @@ module.exports = async (req, res) => {
 
     let files = response.data.files || [];
 
-    // 2. Buscar si existe una subcarpeta para assets adicionales (búsqueda más flexible)
-    // Buscamos cualquier carpeta que contenga 'Imagen' (para capturar Imágenes, Imagenes, IMAGENES, etc)
-    const subfolderQuery = await drive.files.list({
-      q: `'${FOLDER_ID}' in parents and (name contains 'Imagen' or name contains 'Asset') and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
+    // 2. Escanear TODAS las subcarpetas dentro de la carpeta principal
+    // Esto evita problemas con nombres de carpetas (Imágenes, Assets, etc)
+    const allFoldersQuery = await drive.files.list({
+      q: `'${FOLDER_ID}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
       fields: 'files(id, name)',
     });
 
-    if (subfolderQuery.data.files && subfolderQuery.data.files.length > 0) {
-      // Escaneamos todas las subcarpetas de imágenes encontradas
-      for (const folder of subfolderQuery.data.files) {
+    if (allFoldersQuery.data.files && allFoldersQuery.data.files.length > 0) {
+      // Escaneamos todas las subcarpetas encontradas
+      for (const folder of allFoldersQuery.data.files) {
           const subResponse = await drive.files.list({
             q: `'${folder.id}' in parents and trashed = false`,
             fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
