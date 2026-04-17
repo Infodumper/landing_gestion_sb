@@ -149,18 +149,15 @@ module.exports = async (req, res) => {
     maquillajeImages.sort((a, b) => a.order - b.order);
     peluqueriaImages.sort((a, b) => a.order - b.order);
 
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    // Cachear respuesta por 5 minutos para optimizar carga
+    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate');
     res.status(200).json({
       status: 'success',
       data: {
           catalogs: latestByLine,
           carousel: carouselImages,
           maquillaje: maquillajeImages,
-          peluqueria: peluqueriaImages,
-          debug: {
-              detectedFolders,
-              totalFilesProcessed: files.length
-          }
+          peluqueria: peluqueriaImages
       }
     });
 
