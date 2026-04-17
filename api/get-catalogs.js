@@ -33,35 +33,48 @@ module.exports = async (req, res) => {
     });
 
     let files = response.data.files || [];
+    const detectedFolders = [];
 
-    // 2. Escanear TODAS las subcarpetas dentro de la carpeta principal
-    // Esto evita problemas con nombres de carpetas (Imágenes, Assets, etc)
-    const allFoldersQuery = await drive.files.list({
-      q: `'${FOLDER_ID}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
-      fields: 'files(id, name)',
-    });
+    // Función para escanear carpetas recursivamente (hasta 2 niveles)
+    async function scanFolder(folderId, folderPath = "", depth = 0) {
+      if (depth > 2) return;
 
-    if (allFoldersQuery.data.files && allFoldersQuery.data.files.length > 0) {
-      // Escaneamos todas las subcarpetas encontradas
-      for (const folder of allFoldersQuery.data.files) {
-          console.log(`[DRIVE] Escaneando subcarpeta: ${folder.name} (${folder.id})`);
-          const subResponse = await drive.files.list({
-            q: `'${folder.id}' in parents and trashed = false`,
-            fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
-            orderBy: 'modifiedTime desc',
-          });
-          if (subResponse.data.files) {
-            const enrichedFiles = subResponse.data.files.map(f => ({ ...f, folderName: folder.name.toLowerCase().trim() }));
-            files = [...files, ...enrichedFiles];
-          }
+      const subFoldersQuery = await drive.files.list({
+        q: `'${folderId}' in parents and mimeType = 'application/vnd.google-apps.folder' and trashed = false`,
+        fields: 'files(id, name)',
+      });
+
+      for (const folder of (subFoldersQuery.data.files || [])) {
+        const normalizedName = folder.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+        detectedFolders.push(folderPath + folder.name);
+
+        const subResponse = await drive.files.list({
+          q: `'${folder.id}' in parents and trashed = false`,
+          fields: 'files(id, name, webContentLink, webViewLink, thumbnailLink, modifiedTime, mimeType)',
+          orderBy: 'modifiedTime desc',
+        });
+
+        if (subResponse.data.files) {
+          const enrichedFiles = subResponse.data.files.map(f => ({ 
+            ...f, 
+            folderName: normalizedName 
+          }));
+          files = [...files, ...enrichedFiles];
+        }
+
+        // Si esta carpeta no es una de las "finales", buscamos dentro por si están anidadas
+        if (normalizedName !== 'maquillaje' && normalizedName !== 'peluqueria') {
+          await scanFolder(folder.id, folderPath + folder.name + "/", depth + 1);
+        }
       }
     }
+
+    await scanFolder(FOLDER_ID);
 
     const latestByLine = {};
     const carouselImages = [];
     const maquillajeImages = [];
     const peluqueriaImages = [];
-    const detectedFolders = (allFoldersQuery.data.files || []).map(f => f.name);
 
     files.forEach(file => {
       // Normalizamos el nombre: minúsculas y quitar acentos
