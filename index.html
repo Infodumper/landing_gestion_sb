@@ -16,7 +16,7 @@
     <meta property="og:image" content="assets/img/logo_2.png">
 
     <!-- Favicon optimizado (usar .ico o .svg en producción) -->
-    <link rel="icon" type="image/png" href="assets/img/logo_Kaizuna.jpeg">
+    <link rel="icon" type="image/png" href="assets/img/logo_2.png">
 
     <!-- Fuentes: preconnect para carga anticipada -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -845,14 +845,14 @@
             },
 
             sendWhatsApp() {
-                let msg   = `Hola Stefanía! 👋 Quisiera realizar el siguiente pedido por la web:\n\n`;
+                let msg   = `Hola Stefanía! Quisiera realizar el siguiente pedido por la web:\n\n`;
                 let total = 0;
                 this.items.forEach(i => {
                     const sub = i.price * i.qty;
                     total += sub;
-                    msg += `▪️ *${i.qty}x* ${i.name} (Cód: ${i.code}) — $${sub.toLocaleString('es-AR')}\n`;
+                    msg += `- *${i.qty}x* ${i.name} (Cód: ${i.code}) — $${sub.toLocaleString('es-AR')}\n`;
                 });
-                msg += `\n💰 *TOTAL: $${total.toLocaleString('es-AR')}*\n\n¿Me podés confirmar disponibilidad? ¡Gracias!`;
+                msg += `\nTOTAL: $${total.toLocaleString('es-AR')}\n\n¿Me podés confirmar disponibilidad? ¡Gracias!`;
                 window.location.href = `https://wa.me/5492235869878?text=${encodeURIComponent(msg)}`;
             },
 
@@ -914,9 +914,9 @@
                 
                 // IMPORTANTE: Acceder a result.data.carousel
                 if (result.status === 'success' && result.data && result.data.carousel) {
-                    result.data.carousel.forEach((img, index) => {
-                        const num = index + 1;
-                        if (img.url) {
+                    result.data.carousel.forEach((img) => {
+                        const num = img.order;
+                        if (img.url && num && num <= 4) {
                             const elements = document.querySelectorAll(`img[id*="carousel-img-${num}"], img[id*="carousel-img-clone-${num}"]`);
                             elements.forEach(el => {
                                 // Solo cambiamos la fuente si la URL de Drive parece válida
