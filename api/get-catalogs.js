@@ -61,92 +61,73 @@ module.exports = async (req, res) => {
     const carouselImages = [];
     const maquillajeImages = [];
     const peluqueriaImages = [];
+    const detectedFolders = (allFoldersQuery.data.files || []).map(f => f.name);
 
     files.forEach(file => {
-      // Normalizamos el nombre: minúsculas y quitar acentos (ej: página -> pagina)
+      // Normalizamos el nombre: minúsculas y quitar acentos
       const fileName = file.name.toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
       
-      let category = 'otros';
+      const isPdf = file.mimeType === 'application/pdf';
+      const isImg = file.mimeType.startsWith('image/');
+      const fileThumb = file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+/, '=s1000') : `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`;
 
-      // Categorización granular
-      if (fileName.includes('carousel') && file.mimeType.startsWith('image/')) {
-          const match = fileName.match(/\d+/);
-          const order = match ? parseInt(match[0]) : 99;
-          carouselImages.push({
+      // Maquillaje (Subcarpeta)
+      if (file.folderName === 'maquillaje' && isImg) {
+          maquillajeImages.push({
               name: fileName,
-              url: file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+/, '=s1600') : `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`,
-              order: order
+              url: fileThumb,
+              order: parseInt(fileName.match(/\d+/) || [99])[0]
           });
           return;
       }
-      
+
+      // Peluquería (Subcarpeta)
+      if (file.folderName === 'peluqueria' && isImg) {
+          peluqueriaImages.push({
+              name: fileName,
+              url: fileThumb,
+              order: parseInt(fileName.match(/\d+/) || [99])[0]
+          });
+          return;
+      }
+
+      // Carrusel
+      if (fileName.includes('carousel') && isImg) {
+          carouselImages.push({
+              name: fileName,
+              url: fileThumb,
+              order: parseInt(fileName.match(/\d+/) || [99])[0]
+          });
+          return;
+      }
+
+      let category = 'otros';
       if (fileName.includes('natura'))                 category = 'natura';
       else if (fileName.includes('avon'))              category = 'avon';
       else if (fileName.includes('mary') || fileName.includes('kay')) category = 'marykay';
       else if (fileName.includes('bagues'))            category = 'bagues';
+      else if (fileName.includes('millanel'))          category = 'millanel';
       else if (fileName.includes('joya') || fileName.includes('perla') || fileName.includes('negra')) category = 'joyas';
       else if (fileName.includes('construccion'))      category = 'construccion';
       else if (fileName.includes('belleza') || fileName.includes('perfu')) category = 'belleza';
 
-      const isPdf = file.mimeType === 'application/pdf';
-      const isImg = file.mimeType.startsWith('image/');
-
-      // Especial para el carrusel
-      if (fileName.includes('carousel') && isImg) {
-          carouselImages.push({
-              name: fileName,
-              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1600`, // Formato estable y de alta calidad
-              order: parseInt(fileName.match(/\d+/) || [99])[0]
-          });
-          return;
-      }
-
-      // Especial para Maquillaje (Tira de imágenes)
-      if (file.folderName === 'maquillaje' && isImg) {
-          maquillajeImages.push({
-              name: fileName,
-              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
-              order: parseInt(fileName.match(/\d+/) || [99])[0]
-          });
-          return;
-      }
-
-      // Especial para Peluquería (Tira de imágenes)
-      if (file.folderName === 'peluqueria' && isImg) {
-          peluqueriaImages.push({
-              name: fileName,
-              url: `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`,
-              order: parseInt(fileName.match(/\d+/) || [99])[0]
-          });
-          return;
-      }
-
-      // Si no existe la entrada para esta categoría, la inicializamos
       if (!latestByLine[category]) {
-        latestByLine[category] = {
-          modified: file.modifiedTime
-        };
+        latestByLine[category] = { modified: file.modifiedTime };
       }
 
-      // Priorizamos el PDF más reciente para los enlaces de visualización/descarga
       if (isPdf && !latestByLine[category].viewLink) {
         latestByLine[category].id = file.id;
         latestByLine[category].name = file.name;
         latestByLine[category].viewLink = file.webViewLink;
         latestByLine[category].downloadLink = file.webContentLink;
-        latestByLine[category].mimeType = file.mimeType;
       }
 
-      // Para la miniatura, preferimos un archivo de imagen real si existe (ej: natura.jpg)
-      // Si no hay imagen, usamos el thumbnailLink generado por Drive para el PDF
       if (isImg) {
-        // Enlaces de Drive para imágenes directas
-        latestByLine[category].thumbnail = `https://drive.google.com/thumbnail?id=${file.id}&sz=w1000`;
+        latestByLine[category].thumbnail = fileThumb;
       } else if (isPdf && !latestByLine[category].thumbnail) {
-        // Para PDFs usamos la miniatura de Drive pero forzamos tamaño grande
-        latestByLine[category].thumbnail = file.thumbnailLink ? file.thumbnailLink.replace(/=s\d+/, '=s1000') : null;
+        latestByLine[category].thumbnail = fileThumb;
       }
     });
 
@@ -155,9 +136,6 @@ module.exports = async (req, res) => {
     maquillajeImages.sort((a, b) => a.order - b.order);
     peluqueriaImages.sort((a, b) => a.order - b.order);
 
-    console.log(`[DRIVE] Respuesta lista: ${maquillajeImages.length} fotos maq, ${peluqueriaImages.length} fotos pel.`);
-
-    // Cache deshabilitado temporalmente para pruebas
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.status(200).json({
       status: 'success',
@@ -165,7 +143,11 @@ module.exports = async (req, res) => {
           catalogs: latestByLine,
           carousel: carouselImages,
           maquillaje: maquillajeImages,
-          peluqueria: peluqueriaImages
+          peluqueria: peluqueriaImages,
+          debug: {
+              detectedFolders,
+              totalFilesProcessed: files.length
+          }
       }
     });
 
